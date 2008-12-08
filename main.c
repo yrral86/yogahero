@@ -1,9 +1,7 @@
 #include <GL/glut.h>
 
+#include "camera.h"
 #include "model.h"
-
-#define WIDTH 640
-#define HEIGHT 480
 
 int main (int argc, char **argv) {
 
@@ -14,6 +12,7 @@ int main (int argc, char **argv) {
   glutDisplayFunc(model_draw_from_vector);
 
   model_set_zero();
+  model_set_type(cylinder);
 
   glutMainLoop();
  
