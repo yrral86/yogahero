@@ -33,7 +33,7 @@ void viewer_set_from_vector() {
   }
 }
 
-void on_drawButton_clicked(GtkWidget *widget, GdkEventButton *event) {
+void viewer_draw() {
   GdkGLContext *glcontext;
   GdkGLDrawable *gldrawable;
 
@@ -43,11 +43,14 @@ void on_drawButton_clicked(GtkWidget *widget, GdkEventButton *event) {
 
   glcontext = gtk_widget_get_gl_context (area);
   gldrawable = gtk_widget_get_gl_drawable (area);
+
   gdk_gl_drawable_gl_begin (gldrawable, glcontext);
-
   model_draw_from_vector();
-
   gdk_gl_drawable_gl_end (gldrawable);
+}
+
+void on_drawButton_clicked(GtkWidget *widget, GdkEventButton *event) {
+  viewer_draw();
 }
 
 void on_loadButton_clicked(GtkWidget *widget, GdkEventButton *event) {
@@ -81,7 +84,7 @@ void on_loadButton_clicked(GtkWidget *widget, GdkEventButton *event) {
   
   viewer_set_from_vector();
   
-  on_drawButton_clicked(widget, event);
+  viewer_draw();
 }
 
 void on_saveButton_clicked(GtkWidget *widget, GdkEventButton *event) {
@@ -120,7 +123,7 @@ void on_resetButton_clicked(GtkWidget *widget, GdkEventButton *event) {
 
   viewer_set_from_vector();
 
-  on_drawButton_clicked(widget, event);
+  viewer_draw();
 }
 
 int main (int argc, char **argv) {
@@ -155,6 +158,8 @@ int main (int argc, char **argv) {
   gtk_container_add(GTK_CONTAINER(glwin), area);
 
   gtk_widget_show_all(glwin);
+
+  viewer_draw();
 
   gtk_main();
 }
