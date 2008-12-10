@@ -36,12 +36,24 @@ void viewer_set_from_vector() {
 void viewer_set_ranges() {
   int i;
   GString *name = g_string_new("");
+  float *mvector;
 
   for (i = 0; i < MODEL_ANGLES; i++) {
     g_string_printf(name, "scale%d", i);
     gtk_range_set_range(GTK_RANGE(glade_xml_get_widget(xml, name->str)),
 			model_get_min(model_angle_to_constraint(i)),
 			model_get_max(model_angle_to_constraint(i)));
+  }
+
+  mvector = model_get_vector();
+
+  for (; i < MODEL_ANGLES + MODEL_SEGMENTS; i++) {
+    g_string_printf(name, "scale%d", i);
+    gtk_range_set_range(GTK_RANGE(glade_xml_get_widget(xml, name->str)),
+			0.0,
+			2*mvector[i]);
+    gtk_range_set_value(GTK_RANGE(glade_xml_get_widget(xml, name->str)),
+			mvector[i]);
   }
 }
 
@@ -174,6 +186,8 @@ int main (int argc, char **argv) {
   gtk_container_add(GTK_CONTAINER(glwin), area);
 
   model_set_constraints();
+
+  model_set_zero();
 
   viewer_set_ranges();
 
