@@ -226,38 +226,38 @@ void rotate_z(float angle) {
 }
 
 void model_set_constraints() {
-  min[neck_c_0] = 0.0;
-  max[neck_c_0] = 90.0;
-  min[neck_c_1] = 0.0;
-  max[neck_c_1] = 90.0;
-  min[shoulder_c_0] = 0.0;
-  max[shoulder_c_0] = 90.0;
-  min[shoulder_c_1] = 0.0;
-  max[shoulder_c_1] = 90.0;
-  min[elbow_c_0] = 0.0;
-  max[elbow_c_0] = 90.0;
-  min[wrist_c_0] = 0.0;
-  max[wrist_c_0] = 90.0;
-  min[wrist_c_1] = 0.0;
-  max[wrist_c_1] = 90.0;
-  min[hip_c_0] = 0.0;
+  min[neck_c_0] = -100.0;
+  max[neck_c_0] = 100.0;
+  min[neck_c_1] = -100.0;
+  max[neck_c_1] = 100.0;
+  min[shoulder_c_0] = -100.0;
+  max[shoulder_c_0] = 100.0;
+  min[shoulder_c_1] = -150.0;
+  max[shoulder_c_1] = 60.0;
+  min[elbow_c_0] = -10.0;
+  max[elbow_c_0] = 150.0;
+  min[wrist_c_0] = -30.0;
+  max[wrist_c_0] = 50.0;
+  min[wrist_c_1] = -100.0;
+  max[wrist_c_1] = 100.0;
+  min[hip_c_0] = -15.0;
   max[hip_c_0] = 90.0;
-  min[hip_c_1] = 0.0;
-  max[hip_c_1] = 90.0;
-  min[knee_c_0] = 0.0;
-  max[knee_c_0] = 90.0;
-  min[ankle_c_0] = 0.0;
+  min[hip_c_1] = -50.0;
+  max[hip_c_1] = 100.0;
+  min[knee_c_0] = -10.0;
+  max[knee_c_0] = 170.0;
+  min[ankle_c_0] = -60.0;
   max[ankle_c_0] = 90.0;
-  min[ankle_c_1] = 0.0;
-  max[ankle_c_1] = 90.0;
-  min[shoulder_c_i] = 0.0;
-  max[shoulder_c_i] = 90.0;
-  min[elbow_c_i] = 0.0;
-  max[elbow_c_i] = 90.0;
-  min[hip_c_i] = 0.0;
-  max[hip_c_i] = 90.0;
-  min[knee_c_i] = 0.0;
-  max[knee_c_i] = 90.0;
+  min[ankle_c_1] = -30.0;
+  max[ankle_c_1] = 30.0;
+  min[shoulder_c_i] = -100.0;
+  max[shoulder_c_i] = 100.0;
+  min[elbow_c_i] = -190.0;
+  max[elbow_c_i] = 100.0;
+  min[hip_c_i] = -100.0;
+  max[hip_c_i] = 100.0;
+  min[knee_c_i] = -30.0;
+  max[knee_c_i] = 30.0;
 }
 
 void model_set_vector(float* v) {
