@@ -33,6 +33,18 @@ void viewer_set_from_vector() {
   }
 }
 
+void viewer_set_ranges() {
+  int i;
+  GString *name = g_string_new("");
+
+  for (i = 0; i < MODEL_ANGLES; i++) {
+    g_string_printf(name, "scale%d", i);
+    gtk_range_set_range(GTK_RANGE(glade_xml_get_widget(xml, name->str)),
+			model_get_min(model_angle_to_constraint(i)),
+			model_get_max(model_angle_to_constraint(i)));
+  }
+}
+
 void viewer_draw() {
   GdkGLContext *glcontext;
   GdkGLDrawable *gldrawable;
@@ -160,6 +172,10 @@ int main (int argc, char **argv) {
   gtk_widget_set_gl_capability(area, config, NULL, TRUE, GDK_GL_RGBA_TYPE);
 
   gtk_container_add(GTK_CONTAINER(glwin), area);
+
+  model_set_constraints();
+
+  viewer_set_ranges();
 
   gtk_widget_show_all(glwin);
 
