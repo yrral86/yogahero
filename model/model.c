@@ -6,6 +6,8 @@
 #include <stdio.h>
 
 static float vector[MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA];
+static float min[MODEL_CONSTRAINTS];
+static float max[MODEL_CONSTRAINTS];
 
 static model_type type;
 
@@ -221,6 +223,41 @@ void rotate_y(float angle) {
 
 void rotate_z(float angle) {
   glRotatef(angle, 0.0, 0.0, 1.0);
+}
+
+void model_set_constraints() {
+  min[neck_c_0] = 0.0;
+  max[neck_c_0] = 90.0;
+  min[neck_c_1] = 0.0;
+  max[neck_c_1] = 90.0;
+  min[shoulder_c_0] = 0.0;
+  max[shoulder_c_0] = 90.0;
+  min[shoulder_c_1] = 0.0;
+  max[shoulder_c_1] = 90.0;
+  min[elbow_c_0] = 0.0;
+  max[elbow_c_0] = 90.0;
+  min[wrist_c_0] = 0.0;
+  max[wrist_c_0] = 90.0;
+  min[wrist_c_1] = 0.0;
+  max[wrist_c_1] = 90.0;
+  min[hip_c_0] = 0.0;
+  max[hip_c_0] = 90.0;
+  min[hip_c_1] = 0.0;
+  max[hip_c_1] = 90.0;
+  min[knee_c_0] = 0.0;
+  max[knee_c_0] = 90.0;
+  min[ankle_c_0] = 0.0;
+  max[ankle_c_0] = 90.0;
+  min[ankle_c_1] = 0.0;
+  max[ankle_c_1] = 90.0;
+  min[shoulder_c_i] = 0.0;
+  max[shoulder_c_i] = 90.0;
+  min[elbow_c_i] = 0.0;
+  max[elbow_c_i] = 90.0;
+  min[hip_c_i] = 0.0;
+  max[hip_c_i] = 90.0;
+  min[knee_c_i] = 0.0;
+  max[knee_c_i] = 90.0;
 }
 
 void model_set_vector(float* v) {

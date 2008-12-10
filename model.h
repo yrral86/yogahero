@@ -84,6 +84,7 @@ void rotate_x(float);
 void rotate_y(float);
 void rotate_z(float);
 
+void model_set_constraints();
 void model_set_vector();
 float* model_get_vector();
 void model_set_zero();
