@@ -76,6 +76,7 @@ typedef enum {
   foot_s_l
 } model_segment_length;
 
+// drawing functions
 void model_draw_from_vector();
 void model_draw_legs();
 void my_gluCylinder(float, float);
@@ -84,13 +85,21 @@ void rotate_x(float);
 void rotate_y(float);
 void rotate_z(float);
 
+// constraint functions
 void model_set_constraints();
+float model_get_min(model_angle_constraint);
+float model_get_max(model_angle_constraint);
+
+// vector manipulation functions
 void model_set_vector();
 float* model_get_vector();
 void model_set_zero();
+
+// type functions (cylinder vs. stick model)
 void model_set_type(model_type);
+
+// file functions
 void model_to_file(char*);
 void model_from_file(char*);
-
 
 #endif

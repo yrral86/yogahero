@@ -260,6 +260,14 @@ void model_set_constraints() {
   max[knee_c_i] = 30.0;
 }
 
+float model_get_min(model_angle_constraint c) {
+  return min[c];
+}
+
+float model_get_max(model_angle_constraint c) {
+  return max[c];
+}
+
 void model_set_vector(float* v) {
   int i;
   int n = MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA;
