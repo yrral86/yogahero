@@ -61,7 +61,7 @@ typedef enum {
   elbow_c_i,
   hip_c_i,
   knee_c_i
-} model_angel_constraint;
+} model_angle_constraint;
 
 typedef enum {
   head_s_l = MODEL_ANGLES,
