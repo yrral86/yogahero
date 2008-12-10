@@ -4,6 +4,7 @@
 #define MODEL_ANGLES 30
 #define MODEL_SEGMENTS 10
 #define MODEL_CAMERA 7
+#define MODEL_CONSTRAINTS 16
 
 typedef enum {
   cylinder,
@@ -42,6 +43,25 @@ typedef enum {
   r_knee_j_i,
   l_knee_j_i
 } model_angle;
+
+typedef enum {
+  neck_c_0,
+  neck_c_1,
+  shoulder_c_0,
+  shoulder_c_1,
+  elbow_c_0,
+  wrist_c_0,
+  wrist_c_1,
+  hip_c_0,
+  hip_c_1,
+  knee_c_0,
+  ankle_c_0,
+  ankle_c_1,
+  shoulder_c_i,
+  elbow_c_i,
+  hip_c_i,
+  knee_c_i
+} model_angel_constraint;
 
 typedef enum {
   head_s_l = MODEL_ANGLES,
