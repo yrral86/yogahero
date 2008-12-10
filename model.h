@@ -89,6 +89,7 @@ void rotate_z(float);
 void model_set_constraints();
 float model_get_min(model_angle_constraint);
 float model_get_max(model_angle_constraint);
+model_angle_constraint model_angle_to_constraint(model_angle);
 
 // vector manipulation functions
 void model_set_vector();

@@ -268,6 +268,57 @@ float model_get_max(model_angle_constraint c) {
   return max[c];
 }
 
+model_angle_constraint model_angle_to_constraint(model_angle a) {
+ switch (a) {
+ case neck_j_0:
+   return neck_c_0;
+ case neck_j_1:
+   return neck_c_1;
+ case r_shoulder_j_0:
+ case l_shoulder_j_0:
+   return shoulder_c_0;
+ case r_shoulder_j_1:
+ case l_shoulder_j_1:
+   return shoulder_c_1;
+ case r_elbow_j_0:
+ case l_elbow_j_0:
+   return elbow_c_0;
+ case r_wrist_j_0:
+ case l_wrist_j_0:
+   return wrist_c_0;
+ case r_wrist_j_1:
+ case l_wrist_j_1:
+   return wrist_c_1;
+ case r_hip_j_0:
+ case l_hip_j_0:
+   return hip_c_0;
+ case r_hip_j_1:
+ case l_hip_j_1:
+   return hip_c_1;
+ case r_knee_j_0:
+ case l_knee_j_0:
+   return knee_c_0;
+ case r_ankle_j_0:
+ case l_ankle_j_0:
+   return ankle_c_0;
+ case r_ankle_j_1:
+ case l_ankle_j_1:
+   return ankle_c_1;
+ case r_shoulder_j_i:
+ case l_shoulder_j_i:
+   return shoulder_c_i;
+ case r_elbow_j_i:
+ case l_elbow_j_i:
+   return elbow_c_i;
+ case r_hip_j_i:
+ case l_hip_j_i:
+   return hip_c_i;
+ case r_knee_j_i:
+ case l_knee_j_i:
+   return knee_c_i;
+ }
+}
+
 void model_set_vector(float* v) {
   int i;
   int n = MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA;
