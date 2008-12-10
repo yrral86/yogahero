@@ -121,7 +121,7 @@ void model_set_invisible(model_segment);
 model_segment_length model_segment_to_length(model_segment);
 
 // vector manipulation functions
-void model_set_vector();
+void model_set_vector(float *v);
 float* model_get_vector();
 void model_set_zero();
 
