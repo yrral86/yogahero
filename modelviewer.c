@@ -11,13 +11,13 @@
 GladeXML *xml;
 GtkWidget *area;
 
-static float vector[MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA];
+static float vector[MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA];
 
 void viewer_set_vector() {
   int i;
   GString *name = g_string_new("");
 
-  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA; i++) {
+  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA; i++) {
     g_string_printf(name, "scale%d", i);
     vector[i] = gtk_range_get_value(GTK_RANGE(glade_xml_get_widget(xml, name->str)));
   }
@@ -27,7 +27,7 @@ void viewer_set_from_vector() {
   int i;
   GString *name = g_string_new("");
 
-  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA; i++) {
+  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA; i++) {
     g_string_printf(name, "scale%d", i);
     gtk_range_set_value(GTK_RANGE(glade_xml_get_widget(xml, name->str)), vector[i]);
   }
@@ -47,7 +47,7 @@ void viewer_set_ranges() {
 
   mvector = model_get_vector();
 
-  for (; i < MODEL_ANGLES + MODEL_SEGMENTS; i++) {
+  for (; i < MODEL_ANGLES + MODEL_SEGMENT_LENGTHS; i++) {
     g_string_printf(name, "scale%d", i);
     gtk_range_set_range(GTK_RANGE(glade_xml_get_widget(xml, name->str)),
 			0.0,
@@ -104,7 +104,7 @@ void on_loadButton_clicked(GtkWidget *widget, GdkEventButton *event) {
 
   mvector = model_get_vector();
 
-  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA; i++) {
+  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA; i++) {
     vector[i] = mvector[i];
   }
   
@@ -145,7 +145,7 @@ void on_resetButton_clicked(GtkWidget *widget, GdkEventButton *event) {
 
   mvector = model_get_vector();
 
-  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA; i++) {
+  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA; i++) {
     vector[i] = mvector[i];
   }
 
@@ -185,7 +185,7 @@ int main (int argc, char **argv) {
 
   gtk_container_add(GTK_CONTAINER(glwin), area);
 
-  model_set_constraints();
+  model_init();
 
   model_set_zero();
 

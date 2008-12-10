@@ -5,9 +5,10 @@
 #include <math.h>
 #include <stdio.h>
 
-static float vector[MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA];
+static float vector[MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA];
 static float min[MODEL_CONSTRAINTS];
 static float max[MODEL_CONSTRAINTS];
+static int visible[MODEL_SEGMENTS];
 
 static model_type type;
 
@@ -25,7 +26,7 @@ void model_draw_from_vector() {
   sideangle *= 180/M_PI;
 
   // setup openGL projection matrix
-  camera_set_from_vector(vector + MODEL_ANGLES + MODEL_SEGMENTS);
+  camera_set_from_vector(vector + MODEL_ANGLES + MODEL_SEGMENT_LENGTHS);
   
   // black background
   glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -34,7 +35,7 @@ void model_draw_from_vector() {
   // clear buffer
   glClear(GL_COLOR_BUFFER_BIT);
 
-  scale = (vector + MODEL_ANGLES + MODEL_SEGMENTS)[c_scale]/8.0;
+  scale = (vector + MODEL_ANGLES + MODEL_SEGMENT_LENGTHS)[c_scale]/8.0;
 
   glLoadIdentity();
 
@@ -55,7 +56,7 @@ void model_draw_from_vector() {
 
   // draw left side
   rotate_y(90 - sideangle);
-  my_gluCylinder(0.25, vector[side_s_l]);
+  my_gluCylinder(0.25, l_side_s);
 
   // push left shoulder
   glPushMatrix();
@@ -63,14 +64,14 @@ void model_draw_from_vector() {
   // draw left  upper arm
   rotate_y(sideangle - 90 + vector[l_shoulder_j_0]);
   rotate_x(vector[l_shoulder_j_1]);
-  my_gluCylinder(0.25, vector[u_arm_s_l]);
+  my_gluCylinder(0.25, l_u_arm_s);
 
   // left shoulder internal rotation
   rotate_internal(-vector[l_shoulder_j_i]);
 
   // draw left lower arm
   rotate_x(-vector[l_elbow_j_0]);
-  my_gluCylinder(0.25, vector[l_arm_s_l]);
+  my_gluCylinder(0.25, l_l_arm_s);
 
   // left elbow internal rotation
   rotate_internal(vector[l_elbow_j_i]);
@@ -78,14 +79,14 @@ void model_draw_from_vector() {
   // draw left hand
   rotate_x(vector[l_wrist_j_0]);
   rotate_y(vector[l_wrist_j_1]);
-  my_gluCylinder(0.25, vector[hand_s_l]);
+  my_gluCylinder(0.25, l_hand_s);
 
   // pop back to left shoulder
   glPopMatrix();
 
   // draw left shoulder
   rotate_y(sideangle + 90);
-  my_gluCylinder(0.25, vector[shoulder_s_l]);
+  my_gluCylinder(0.25, l_shoulder_s);
 
   // push base of neck
   glPushMatrix();
@@ -93,13 +94,13 @@ void model_draw_from_vector() {
   // draw head
   rotate_y(vector[neck_j_1] - 90);
   rotate_x(vector[neck_j_0]);
-  my_gluCylinder(0.25, vector[head_s_l]);
+  my_gluCylinder(0.25, head_s);
 
   // pop back to base of neck
   glPopMatrix();
   
   // draw right shoulder
-  my_gluCylinder(0.25, vector[shoulder_s_l]);
+  my_gluCylinder(0.25, r_shoulder_s);
 
   // push right shoulder
   glPushMatrix();
@@ -107,14 +108,14 @@ void model_draw_from_vector() {
   // draw right upper arm
   rotate_y(-vector[r_shoulder_j_0]);
   rotate_x(vector[r_shoulder_j_1]);
-  my_gluCylinder(0.25, vector[u_arm_s_l]);
+  my_gluCylinder(0.25, r_u_arm_s);
 
   // right shoulder internal rotation
   rotate_internal(vector[r_shoulder_j_i]);
 
   // draw right lower arm
   rotate_x(-vector[r_elbow_j_0]);
-  my_gluCylinder(0.25, vector[l_arm_s_l]);
+  my_gluCylinder(0.25, r_l_arm_s);
 
   // right elbow internal rotation
   rotate_internal(-vector[r_elbow_j_i]);
@@ -122,14 +123,14 @@ void model_draw_from_vector() {
   // draw right hand
   rotate_x(vector[r_wrist_j_0]);
   rotate_y(-vector[r_wrist_j_1]);
-  my_gluCylinder(0.25, vector[hand_s_l]);
+  my_gluCylinder(0.25, r_hand_s);
 
   // pop back to right shoulder
   glPopMatrix();
 
   // draw right side
   rotate_y(90 + sideangle);
-  my_gluCylinder(0.25, vector[side_s_l]);
+  my_gluCylinder(0.25, r_side_s);
 
   glFlush();
 }
@@ -140,19 +141,19 @@ void model_draw_legs() {
 
   // draw right foot
   rotate_y(180.0);
-  my_gluCylinder(0.25, vector[foot_s_l]);
+  my_gluCylinder(0.25, r_foot_s);
 
   // draw right lower leg
   rotate_x(-90 + vector[r_ankle_j_0]);
   rotate_z(vector[r_ankle_j_1]);
-  my_gluCylinder(0.25, vector[l_leg_s_l]);
+  my_gluCylinder(0.25, r_l_leg_s);
 
   // right knee internal rotation
   rotate_internal(vector[r_knee_j_i]);
 
   // draw right upper leg
   rotate_x(vector[r_knee_j_0]);
-  my_gluCylinder(0.25, vector[u_leg_s_l]);
+  my_gluCylinder(0.25, r_u_leg_s);
 
   // right hip internal rotation
   rotate_internal(vector[r_hip_j_i]);
@@ -160,7 +161,7 @@ void model_draw_legs() {
   // draw pelvis
   rotate_y(-90 + vector[r_hip_j_0]);
   rotate_z(vector[r_hip_j_1]);
-  my_gluCylinder(0.25, vector[pelvis_s_l]);
+  my_gluCylinder(0.25, pelvis_s);
 
   // push left hip
   glPushMatrix();
@@ -168,14 +169,14 @@ void model_draw_legs() {
   // draw left upper leg
   rotate_y(-90 + vector[l_hip_j_0]);
   rotate_x(-vector[l_hip_j_1]);
-  my_gluCylinder(0.25, vector[u_leg_s_l]);
+  my_gluCylinder(0.25, l_u_leg_s);
 
   // left hip internal rotation
   rotate_internal(-vector[l_hip_j_i]);
 
   // draw left lower leg
   rotate_x(vector[l_knee_j_0]);
-  my_gluCylinder(0.25, vector[l_leg_s_l]);
+  my_gluCylinder(0.25, l_l_leg_s);
 
   // left knee internal rotation
   rotate_internal(-vector[l_knee_j_i]);
@@ -183,7 +184,7 @@ void model_draw_legs() {
   // draw left foot
   rotate_x(-90 + vector[l_ankle_j_0]);
   rotate_y(vector[l_ankle_j_1]);
-  my_gluCylinder(0.25, vector[foot_s_l]);
+  my_gluCylinder(0.25, l_foot_s);
 
   glGetFloatv(GL_MODELVIEW_MATRIX, modelview);
 
@@ -200,12 +201,16 @@ void model_draw_legs() {
 // we only need one endcap as the color
 // is uniform, so we only need to ensure
 // we can't look down the pipe and see black
-void my_gluCylinder(float radius, float length) {
-  GLUquadricObj *quad;
-  quad = gluNewQuadric();
-  gluDisk(quad, 0.0, radius, 32, 32);
-  gluCylinder(quad, radius, radius, length, 32, 32);
-  gluDeleteQuadric(quad);
+void my_gluCylinder(float radius, model_segment s) {
+  float length = vector[model_segment_to_length(s)];
+  if (visible[s]) {
+    GLUquadricObj *quad;
+    quad = gluNewQuadric();
+    gluDisk(quad, 0.0, radius, 32, 32);
+    gluCylinder(quad, radius, radius, length, 32, 32);
+    gluDeleteQuadric(quad);
+  }
+  
   glTranslatef(0.0, 0.0, length);
 }
 
@@ -225,7 +230,10 @@ void rotate_z(float angle) {
   glRotatef(angle, 0.0, 0.0, 1.0);
 }
 
-void model_set_constraints() {
+void model_init() {
+  int i;
+
+  // set angle constraints
   min[neck_c_0] = -100.0;
   max[neck_c_0] = 100.0;
   min[neck_c_1] = -100.0;
@@ -258,6 +266,11 @@ void model_set_constraints() {
   max[hip_c_i] = 100.0;
   min[knee_c_i] = -30.0;
   max[knee_c_i] = 30.0;
+
+  // set everything visible
+  for (i = 0; i < MODEL_SEGMENTS; i++) {
+    visible[i] = 1;
+  }
 }
 
 float model_get_min(model_angle_constraint c) {
@@ -319,9 +332,50 @@ model_angle_constraint model_angle_to_constraint(model_angle a) {
  }
 }
 
+void model_set_visible(model_segment s) {
+  visible[s] = 1;
+}
+
+void model_set_invisible(model_segment s) {
+  visible[s] = 0;
+}
+
+model_segment_length model_segment_to_length(model_segment s) {
+  switch(s) {
+  case head_s:
+    return head_s_l;
+  case r_shoulder_s:
+  case l_shoulder_s:
+    return shoulder_s_l;
+  case r_u_arm_s:
+  case l_u_arm_s:
+    return u_arm_s_l;
+  case r_l_arm_s:
+  case l_l_arm_s:
+    return l_arm_s_l;
+  case r_hand_s:
+  case l_hand_s:
+    return hand_s_l;
+  case r_side_s:
+  case l_side_s:
+    return side_s_l;
+  case pelvis_s:
+    return pelvis_s_l;
+  case r_u_leg_s:
+  case l_u_leg_s:
+    return u_leg_s_l;
+  case r_l_leg_s:
+  case l_l_leg_s:
+    return l_leg_s_l;
+  case r_foot_s:
+  case l_foot_s:
+    return foot_s_l;
+  }
+}
+
 void model_set_vector(float* v) {
   int i;
-  int n = MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA;
+  int n = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA;
 
   for (i = 0; i < n; i++)
     vector[i] = v[i];
@@ -381,7 +435,7 @@ void model_set_zero() {
   vector[foot_s_l] = 0.5*CUBIT;
 
   // camera parameters
-  i = MODEL_ANGLES + MODEL_SEGMENTS;
+  i = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS;
 
   // camera position x,y,z (origin is toe end of right foot)
   vector[i + c_pos_x] = 0.0;
@@ -407,7 +461,7 @@ void model_to_file(char *fn) {
   int i;
   FILE *out = fopen(fn, "w");
 
-  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA; i++) {
+  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA; i++) {
     fprintf(out, "%g\n", vector[i]);
   }
 
@@ -418,7 +472,7 @@ void model_from_file(char *fn) {
   int i;
   FILE *in = fopen(fn, "r");
 
-  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENTS + MODEL_CAMERA; i++) {
+  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA; i++) {
     fscanf(in, "%g\n", vector + i);
   }
 

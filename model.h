@@ -2,9 +2,10 @@
 #define __MODEL_H__
 
 #define MODEL_ANGLES 30
-#define MODEL_SEGMENTS 10
+#define MODEL_SEGMENT_LENGTHS 10
 #define MODEL_CAMERA 7
 #define MODEL_CONSTRAINTS 16
+#define MODEL_SEGMENTS 18
 
 typedef enum {
   cylinder,
@@ -76,20 +77,48 @@ typedef enum {
   foot_s_l
 } model_segment_length;
 
+typedef enum {
+  head_s,
+  r_shoulder_s,
+  l_shoulder_s,
+  r_u_arm_s,
+  l_u_arm_s,
+  r_l_arm_s,
+  l_l_arm_s,
+  r_hand_s,
+  l_hand_s,
+  r_side_s,
+  l_side_s,
+  pelvis_s,
+  r_u_leg_s,
+  l_u_leg_s,
+  r_l_leg_s,
+  l_l_leg_s,
+  r_foot_s,
+  l_foot_s
+} model_segment;
+
 // drawing functions
 void model_draw_from_vector();
 void model_draw_legs();
-void my_gluCylinder(float, float);
+void my_gluCylinder(float, model_segment);
 void rotate_internal(float);
 void rotate_x(float);
 void rotate_y(float);
 void rotate_z(float);
 
+// sets up constraints and visibility
+void model_init();
+
 // constraint functions
-void model_set_constraints();
 float model_get_min(model_angle_constraint);
 float model_get_max(model_angle_constraint);
 model_angle_constraint model_angle_to_constraint(model_angle);
+
+// visibility functions
+void model_set_visible(model_segment);
+void model_set_invisible(model_segment);
+model_segment_length model_segment_to_length(model_segment);
 
 // vector manipulation functions
 void model_set_vector();
