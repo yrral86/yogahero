@@ -68,6 +68,8 @@ void on_loadButton_clicked(GtkWidget *widget, GdkEventButton *event) {
 					    GTK_RESPONSE_ACCEPT,
 					    NULL);
 
+  gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(filechooser), "poses");
+
   if (gtk_dialog_run(GTK_DIALOG(filechooser)) == GTK_RESPONSE_ACCEPT) {
     filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(filechooser));
     model_from_file((char*)filename);
@@ -99,6 +101,8 @@ void on_saveButton_clicked(GtkWidget *widget, GdkEventButton *event) {
 					    GTK_STOCK_SAVE,
 					    GTK_RESPONSE_ACCEPT,
 					    NULL);
+
+  gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(filechooser), "poses");
 
   if (gtk_dialog_run(GTK_DIALOG(filechooser)) == GTK_RESPONSE_ACCEPT) {
     filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(filechooser));

@@ -39,7 +39,7 @@ void model_draw_from_vector() {
   glScalef(scale, scale, scale);
 
   model_draw_legs();
-
+  
   // clear buffer
   glClear(GL_COLOR_BUFFER_BIT);
 
@@ -53,7 +53,6 @@ void model_draw_from_vector() {
 
   // draw left side
   rotate_y(90 - sideangle);
-  rotate_z(vector[l_hip_j_1]);
   my_gluCylinder(0.25, vector[side_s_l]);
 
   // push left shoulder
@@ -65,10 +64,10 @@ void model_draw_from_vector() {
   my_gluCylinder(0.25, vector[u_arm_s_l]);
 
   // left shoulder internal rotation
-  rotate_internal(vector[l_shoulder_j_i]);
+  rotate_internal(-vector[l_shoulder_j_i]);
 
   // draw left lower arm
-  rotate_x(vector[l_elbow_j_0]);
+  rotate_x(-vector[l_elbow_j_0]);
   my_gluCylinder(0.25, vector[l_arm_s_l]);
 
   // left elbow internal rotation
@@ -90,8 +89,8 @@ void model_draw_from_vector() {
   glPushMatrix();
 
   // draw head
-  rotate_x(vector[neck_j_0]);
   rotate_y(vector[neck_j_1] - 90);
+  rotate_x(vector[neck_j_0]);
   my_gluCylinder(0.25, vector[head_s_l]);
 
   // pop back to base of neck
@@ -104,7 +103,7 @@ void model_draw_from_vector() {
   glPushMatrix();
 
   // draw right upper arm
-  rotate_y(vector[r_shoulder_j_0]);
+  rotate_y(-vector[r_shoulder_j_0]);
   rotate_x(vector[r_shoulder_j_1]);
   my_gluCylinder(0.25, vector[u_arm_s_l]);
 
@@ -112,15 +111,15 @@ void model_draw_from_vector() {
   rotate_internal(vector[r_shoulder_j_i]);
 
   // draw right lower arm
-  rotate_x(vector[r_elbow_j_0]);
+  rotate_x(-vector[r_elbow_j_0]);
   my_gluCylinder(0.25, vector[l_arm_s_l]);
 
   // right elbow internal rotation
-  rotate_internal(vector[r_elbow_j_i]);
+  rotate_internal(-vector[r_elbow_j_i]);
 
   // draw right hand
   rotate_x(vector[r_wrist_j_0]);
-  rotate_y(vector[r_wrist_j_1]);
+  rotate_y(-vector[r_wrist_j_1]);
   my_gluCylinder(0.25, vector[hand_s_l]);
 
   // pop back to right shoulder
@@ -143,18 +142,18 @@ void model_draw_legs() {
 
   // draw right lower leg
   rotate_x(-90 + vector[r_ankle_j_0]);
-  rotate_y(vector[r_ankle_j_1]);
+  rotate_z(vector[r_ankle_j_1]);
   my_gluCylinder(0.25, vector[l_leg_s_l]);
 
   // right knee internal rotation
-  rotate_internal(-vector[r_knee_j_i]);
+  rotate_internal(vector[r_knee_j_i]);
 
   // draw right upper leg
   rotate_x(vector[r_knee_j_0]);
   my_gluCylinder(0.25, vector[u_leg_s_l]);
 
   // right hip internal rotation
-  rotate_internal(-vector[r_hip_j_i]);
+  rotate_internal(vector[r_hip_j_i]);
 
   // draw pelvis
   rotate_y(-90 + vector[r_hip_j_0]);
@@ -166,18 +165,18 @@ void model_draw_legs() {
 
   // draw left upper leg
   rotate_y(-90 + vector[l_hip_j_0]);
-  rotate_z(vector[l_hip_j_1]);
+  rotate_x(-vector[l_hip_j_1]);
   my_gluCylinder(0.25, vector[u_leg_s_l]);
 
   // left hip internal rotation
-  rotate_internal(vector[l_hip_j_i]);
+  rotate_internal(-vector[l_hip_j_i]);
 
   // draw left lower leg
   rotate_x(vector[l_knee_j_0]);
   my_gluCylinder(0.25, vector[l_leg_s_l]);
 
   // left knee internal rotation
-  rotate_internal(vector[l_knee_j_i]);
+  rotate_internal(-vector[l_knee_j_i]);
 
   // draw left foot
   rotate_x(-90 + vector[l_ankle_j_0]);
