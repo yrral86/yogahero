@@ -284,31 +284,14 @@ void model_set_zero() {
   // camera parameters
   i = MODEL_ANGLES + MODEL_SEGMENTS;
 
-  /* side view 
-  // camera position x,y,z (origin is toe end of right foot)
-  vector[i + c_pos_x] = -4.0;
-  vector[i + c_pos_y] = 0.5;
-  vector[i + c_pos_z] = 0.0;
-*/
-
-  /* front view */
   // camera position x,y,z (origin is toe end of right foot)
   vector[i + c_pos_x] = 0.0;
   vector[i + c_pos_y] = 0.5;
   vector[i + c_pos_z] = 4.0;
 
-
   // where we are looking x,y,z
   vector[i + c_look_x] = 0.0;
-  //  vector[i + c_look_y] = 0.5;
   vector[i + c_look_z] = 0.0;
-
-  /*
-  // where is up x,y,z (this is constant assuming level camera)
-  vector[i + c_up_x] = 0.0;
-  vector[i + c_up_y] = 1.0;
-  vector[i + c_up_z] = 0.0;
-  */
 
   // fov
   vector[i + c_fov] = 30.0;
