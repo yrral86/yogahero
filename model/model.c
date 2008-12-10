@@ -361,9 +361,12 @@ void model_set_zero() {
   // hand
   vector[hand_s_l] = 1.0/3.0*CUBIT;
 
-  // side (sqrt((shoulder - 1/2 pelvis)^2 + (height - head - legs)^2) cubits)
-  // height = 4 cubits, head = 0.5 cubits
-  vector[side_s_l] = sqrt(2.3125);
+  // side (sqrt((shoulder - 1/2 pelvis)^2 + (height - head - legs)^2))
+  // height = 4 cubits (8 units), head = 0.5 cubits (1 unit)
+  // shoulder = 0.5 cubits (1 unit), pelvis = 0.5 cubits (1 unit)
+  // upper leg = 1 cubit (2 units), lower leg = 1 cubit (2 units)
+  // sqrt((1 - 0.5)^2 + (8 - 1 - 4)^2)
+  vector[side_s_l] = sqrt(9.25);
 
   // pelvis
   vector[pelvis_s_l] = 0.5*CUBIT;
