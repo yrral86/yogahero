@@ -91,10 +91,14 @@ int main (int argc, char **argv) {
 							    NULL));
   glcontext = gdk_gl_context_new(gldrawable,
 				 NULL,
-				 FALSE,
+				 TRUE,
 				 GDK_GL_RGBA_TYPE);
   gdk_gl_drawable_gl_begin(gldrawable, glcontext);
   // end off-screen setup
+
+  if (!gdk_gl_context_is_direct(glcontext)) {
+    printf("Warning: no direct rendering... falling back to software rendering.\n");
+  }
 
   // prepare model
   model_init();
