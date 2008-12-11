@@ -39,6 +39,7 @@ int match (IplImage *image) {
 
 int main (int argc, char **argv) {
   IplImage *image;
+  char imagefn[100], posefn[100];
 
   if (argc < 3) {
     g_printf("Usage: ./match imagefile posefile [-c] [-f n] [-a n]\n");
@@ -48,9 +49,12 @@ int main (int argc, char **argv) {
     exit(0);
   }
   
-  g_printf("Matching image %s, to pose %s\n", argv[1], argv[2]);
+  strcpy(imagefn, argv[1]);
+  strcpy(posefn, argv[2]);
 
-  image = cvLoadImage(argv[1], 0);
+  g_printf("Matching image %s, to pose %s\n", imagefn, posefn);
+
+  image = cvLoadImage(imagefn, 0);
 
   cvFlip(image, NULL, 0);
 
@@ -62,7 +66,7 @@ int main (int argc, char **argv) {
 
   model_init();
 
-  model_from_file(argv[2]);
+  model_from_file(posefn);
 
   match(image);
 
