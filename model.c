@@ -1,7 +1,8 @@
 #include "camera.h"
 #include "model.h"
 
-#include <GL/glut.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include <math.h>
 #include <stdio.h>
 
@@ -132,7 +133,7 @@ void model_draw_from_vector() {
   rotate_y(90 + sideangle);
   my_gluCylinder(0.25, r_side_s);
 
-  glFlush();
+  glFinish();
 }
 
 void model_draw_legs() {

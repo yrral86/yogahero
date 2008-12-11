@@ -5,14 +5,21 @@
 
 static float floorWeight = 0.0;
 static float angleWeight = 0.0;
+static count = 0;
 
 float error_function(float p[], IplImage *image) {
   IplImage *buffer = cvCreateImage(cvGetSize(image), 8, 1);
   float sd, fe, ae;
-
+  char fn[100];
+  
   project(buffer, p);
 
   sd = symmetric_difference(image, buffer);
+
+  sprintf(fn, "out/%d.model", count);
+  model_to_file(fn);
+  sprintf(fn, "out/%d.png", count++);
+  cvSaveImage(fn, buffer);
 
   cvReleaseImage(&buffer);
 
