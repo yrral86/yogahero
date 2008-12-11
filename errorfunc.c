@@ -1,7 +1,7 @@
 #include "errorfunc.h"
 #include "model.h"
 
-#include <GL/glut.h>
+#include <GL/gl.h>
 
 static float floorWeight = 0.0;
 static float angleWeight = 0.0;
