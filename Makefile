@@ -16,7 +16,7 @@ CV_FLAGS = `pkg-config --cflags opencv`
 
 CV_LIBS = `pkg-config --libs opencv`
 
-C_FLAGS = -g
+C_FLAGS = -g -Wall
 
 all: findmatch modelviewer
 

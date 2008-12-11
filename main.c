@@ -7,7 +7,7 @@
 #include <cv.h>
 #include <highgui.h>
 
-int match (IplImage *image) {
+void match (IplImage *image) {
   int iterations, n, i, j;
   float returnval;
 

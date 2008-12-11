@@ -157,7 +157,6 @@ void on_resetButton_clicked(GtkWidget *widget, GdkEventButton *event) {
 int main (int argc, char **argv) {
   GtkWidget *win;
   GtkWidget *glwin;
-  GThread *thread;
   GdkGLConfig *config;
 
   gtk_init(&argc, &argv);
@@ -196,4 +195,6 @@ int main (int argc, char **argv) {
   viewer_draw();
 
   gtk_main();
+
+  return 0;
 }

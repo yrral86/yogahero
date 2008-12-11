@@ -136,7 +136,6 @@ void model_draw_from_vector() {
 }
 
 void model_draw_legs() {
-  int i;
   float modelview[16];
 
   // draw right foot
@@ -213,7 +212,6 @@ void my_gluCylinder(float radius, model_segment s) {
   
   glTranslatef(0.0, 0.0, length);
 }
-
 void rotate_internal(float angle) {
   rotate_z(angle);
 }
