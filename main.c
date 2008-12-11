@@ -1,13 +1,15 @@
 #include "camera.h"
 #include "model.h"
+#include "nrc.h"
+#include "errorfunc.h"
 
 #include <GL/glut.h>
 #include <cv.h>
-
-extern float error_function(float [], IplImage*);
+#include <highgui.h>
 
 int match (IplImage *image) {
-  int returnval, iterations, n, i, j;
+  int iterations, n, i, j;
+  float returnval;
 
   n = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA;
   float *p = model_get_vector();
@@ -69,6 +71,8 @@ int main (int argc, char **argv) {
   model_from_file(posefn);
 
   match(image);
+
+  model_to_file("pose.out");
 
   cvReleaseImage(&image);
  

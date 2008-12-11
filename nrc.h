@@ -12,8 +12,7 @@
 #include <cv.h>
 
 /// Maximum number of iterations
-//#define ITMAX 200
-#define ITMAX 1
+#define ITMAX 200
 #define TINY 1.0e-20
 #define TOL 2.0e-4
 #define GOLD 1.618034
