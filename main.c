@@ -46,6 +46,8 @@ void match (IplImage *image) {
     free(xi[i] + 1);
 
   free(xi + 1);
+
+  free(p + 1);
 }
 
 int main (int argc, char **argv) {
@@ -99,13 +101,13 @@ int main (int argc, char **argv) {
   model_from_file(posefn);
 
   // match image to pose
-  printf("error before match: %g\n", error_function(model_get_vector(), image));
+  printf("error before match: %g\n", error_function(model_get_vector() - 1, image));
   match(image);
-  printf("error after match: %g\n", error_function(model_get_vector(), image));
+  printf("error after match: %g\n", error_function(model_get_vector() - 1, image));
 
   // save model as image
   buffer = cvCreateImage(cvGetSize(image), 8, 1);
-  project(buffer, model_get_vector());
+  project(buffer, model_get_vector() - 1);
   cvFlip(buffer, NULL, 0);
   cvSaveImage("pose.png", buffer);
 

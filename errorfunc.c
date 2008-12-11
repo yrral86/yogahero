@@ -16,10 +16,12 @@ float error_function(float p[], IplImage *image) {
 
   sd = symmetric_difference(image, buffer);
 
+  /*
   sprintf(fn, "out/%d.model", count);
   model_to_file(fn);
   sprintf(fn, "out/%d.png", count++);
   cvSaveImage(fn, buffer);
+  */
 
   cvReleaseImage(&buffer);
 
@@ -44,7 +46,7 @@ float symmetric_difference(IplImage *img1, IplImage *img2) {
 }
 
 void project(IplImage *img, float *p) {
-  model_set_vector(p);
+  model_set_vector(p + 1);
   
   model_draw_from_vector();
   
