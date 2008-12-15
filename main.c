@@ -102,6 +102,7 @@ int main (int argc, char **argv) {
 
   // prepare model
   model_init();
+  model_set_type(ellipsoid);
   model_from_file(posefn);
 
   // match image to pose
