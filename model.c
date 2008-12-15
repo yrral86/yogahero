@@ -206,7 +206,10 @@ void my_gluCylinder(float radius, model_segment s) {
   float length = vector[model_segment_to_length(s)];
   if (visible[s]) {
     if (type == stick) {
-
+      glBegin(GL_LINES);
+      glVertex3f(0,0,0);
+      glVertex3f(0,0,length);
+      glEnd();
     } else {
       quad = gluNewQuadric();
       if (type == ellipsoid) {

@@ -187,7 +187,7 @@ int main (int argc, char **argv) {
 
   model_set_zero();
 
-  model_set_type(ellipsoid);
+  model_set_type(stick);
 
   viewer_set_ranges();
 
