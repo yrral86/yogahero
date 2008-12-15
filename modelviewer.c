@@ -72,6 +72,17 @@ void viewer_draw() {
   gdk_gl_drawable_gl_end (gldrawable);
 }
 
+void on_typeComboBox_changed(GtkWidget *widget, gpointer data) {
+  gchar *string;
+  string = gtk_combo_box_get_active_text(GTK_COMBO_BOX(widget));
+  if (g_strcmp0(string, "ellipsoid") == 0)
+    model_set_type(ellipsoid);
+  else if (g_strcmp0(string, "cylinder") == 0)
+    model_set_type(cylinder);
+  else if (g_strcmp0(string, "stick") == 0)
+    model_set_type(stick);
+}
+
 void on_drawButton_clicked(GtkWidget *widget, GdkEventButton *event) {
   viewer_draw();
 }
@@ -187,7 +198,7 @@ int main (int argc, char **argv) {
 
   model_set_zero();
 
-  model_set_type(stick);
+  model_set_type(ellipsoid);
 
   viewer_set_ranges();
 

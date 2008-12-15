@@ -8,1168 +8,16 @@
     <child>
       <widget class="GtkTable" id="mainTable">
         <property name="visible">True</property>
-        <property name="n_rows">49</property>
+        <property name="n_rows">50</property>
         <property name="n_columns">2</property>
         <child>
-          <widget class="GtkHScale" id="scale29">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">29</property>
-            <property name="bottom_attach">30</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale46">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">1 0 2 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">46</property>
-            <property name="bottom_attach">47</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale45">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">30 0 60 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">45</property>
-            <property name="bottom_attach">46</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale44">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -6 6 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">44</property>
-            <property name="bottom_attach">45</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale43">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -4 4 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">43</property>
-            <property name="bottom_attach">44</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale42">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">4 -6 6 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">42</property>
-            <property name="bottom_attach">43</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale41">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0.5 0 2 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">41</property>
-            <property name="bottom_attach">42</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale40">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -4 4 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">40</property>
-            <property name="bottom_attach">41</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale39">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">1 0 2 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">39</property>
-            <property name="bottom_attach">40</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale38">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">2 0 4 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">38</property>
-            <property name="bottom_attach">39</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale37">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">2 0 4 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">37</property>
-            <property name="bottom_attach">38</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale36">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">1 0 2 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">36</property>
-            <property name="bottom_attach">37</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale35">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">1.52 0 3 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">35</property>
-            <property name="bottom_attach">36</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale34">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0.67000000000000004 0 1.3300000000000001 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">34</property>
-            <property name="bottom_attach">35</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale33">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">1 0 2 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">33</property>
-            <property name="bottom_attach">34</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale32">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">1 0 2 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">32</property>
-            <property name="bottom_attach">33</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale31">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">1 0 2 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">31</property>
-            <property name="bottom_attach">32</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale30">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">1 0 2 1 10 0</property>
-            <property name="digits">2</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">30</property>
-            <property name="bottom_attach">31</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale28">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">28</property>
-            <property name="bottom_attach">29</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale27">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">27</property>
-            <property name="bottom_attach">28</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale26">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">26</property>
-            <property name="bottom_attach">27</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale25">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">25</property>
-            <property name="bottom_attach">26</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale24">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">24</property>
-            <property name="bottom_attach">25</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale23">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">23</property>
-            <property name="bottom_attach">24</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale22">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">22</property>
-            <property name="bottom_attach">23</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale21">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">21</property>
-            <property name="bottom_attach">22</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale20">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">20</property>
-            <property name="bottom_attach">21</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale19">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">19</property>
-            <property name="bottom_attach">20</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale18">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">18</property>
-            <property name="bottom_attach">19</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale17">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">17</property>
-            <property name="bottom_attach">18</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale16">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">16</property>
-            <property name="bottom_attach">17</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale15">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">15</property>
-            <property name="bottom_attach">16</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale14">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">14</property>
-            <property name="bottom_attach">15</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale13">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">13</property>
-            <property name="bottom_attach">14</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale12">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">12</property>
-            <property name="bottom_attach">13</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale11">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">11</property>
-            <property name="bottom_attach">12</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale10">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">10</property>
-            <property name="bottom_attach">11</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale9">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">9</property>
-            <property name="bottom_attach">10</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale8">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">8</property>
-            <property name="bottom_attach">9</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale7">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">7</property>
-            <property name="bottom_attach">8</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale6">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">6</property>
-            <property name="bottom_attach">7</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale5">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">5</property>
-            <property name="bottom_attach">6</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale4">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">4</property>
-            <property name="bottom_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale3">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">3</property>
-            <property name="bottom_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale2">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale1">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-            <property name="top_attach">1</property>
-            <property name="bottom_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkHScale" id="scale0">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="adjustment">0 -90 90 1 10 0</property>
-            <property name="value_pos">GTK_POS_LEFT</property>
-          </widget>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="right_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label47">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">scale</property>
-          </widget>
-          <packing>
-            <property name="top_attach">46</property>
-            <property name="bottom_attach">47</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label46">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">fov</property>
-          </widget>
-          <packing>
-            <property name="top_attach">45</property>
-            <property name="bottom_attach">46</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label45">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">look_z</property>
-          </widget>
-          <packing>
-            <property name="top_attach">44</property>
-            <property name="bottom_attach">45</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label44">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">look_x</property>
-          </widget>
-          <packing>
-            <property name="top_attach">43</property>
-            <property name="bottom_attach">44</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label43">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">pos_z</property>
-          </widget>
-          <packing>
-            <property name="top_attach">42</property>
-            <property name="bottom_attach">43</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label42">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">pos_y</property>
-          </widget>
-          <packing>
-            <property name="top_attach">41</property>
-            <property name="bottom_attach">42</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label41">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">pos_x</property>
-          </widget>
-          <packing>
-            <property name="top_attach">40</property>
-            <property name="bottom_attach">41</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label40">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">foot</property>
-          </widget>
-          <packing>
-            <property name="top_attach">39</property>
-            <property name="bottom_attach">40</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label39">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_leg</property>
-          </widget>
-          <packing>
-            <property name="top_attach">38</property>
-            <property name="bottom_attach">39</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label38">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">u_leg</property>
-          </widget>
-          <packing>
-            <property name="top_attach">37</property>
-            <property name="bottom_attach">38</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label37">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">pelvis</property>
-          </widget>
-          <packing>
-            <property name="top_attach">36</property>
-            <property name="bottom_attach">37</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label36">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">side</property>
-          </widget>
-          <packing>
-            <property name="top_attach">35</property>
-            <property name="bottom_attach">36</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label35">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">hand</property>
-          </widget>
-          <packing>
-            <property name="top_attach">34</property>
-            <property name="bottom_attach">35</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label34">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_arm</property>
-          </widget>
-          <packing>
-            <property name="top_attach">33</property>
-            <property name="bottom_attach">34</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label33">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">shoulder</property>
-          </widget>
-          <packing>
-            <property name="top_attach">31</property>
-            <property name="bottom_attach">32</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label32">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">u_arm</property>
-          </widget>
-          <packing>
-            <property name="top_attach">32</property>
-            <property name="bottom_attach">33</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label31">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">head</property>
-          </widget>
-          <packing>
-            <property name="top_attach">30</property>
-            <property name="bottom_attach">31</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label30">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_knee_i</property>
-          </widget>
-          <packing>
-            <property name="top_attach">29</property>
-            <property name="bottom_attach">30</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label29">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_knee_i</property>
-          </widget>
-          <packing>
-            <property name="top_attach">28</property>
-            <property name="bottom_attach">29</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label28">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_hip_i</property>
-          </widget>
-          <packing>
-            <property name="top_attach">27</property>
-            <property name="bottom_attach">28</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label27">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_hip_i</property>
-          </widget>
-          <packing>
-            <property name="top_attach">26</property>
-            <property name="bottom_attach">27</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label26">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_elbow_i</property>
-          </widget>
-          <packing>
-            <property name="top_attach">25</property>
-            <property name="bottom_attach">26</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label25">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_elbow_i</property>
-          </widget>
-          <packing>
-            <property name="top_attach">24</property>
-            <property name="bottom_attach">25</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label24">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_shoulder_i</property>
-          </widget>
-          <packing>
-            <property name="top_attach">23</property>
-            <property name="bottom_attach">24</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label23">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_shoulder_i</property>
-          </widget>
-          <packing>
-            <property name="top_attach">22</property>
-            <property name="bottom_attach">23</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label22">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_ankle_1</property>
-          </widget>
-          <packing>
-            <property name="top_attach">21</property>
-            <property name="bottom_attach">22</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label21">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_ankle_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">20</property>
-            <property name="bottom_attach">21</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label20">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_ankle_1</property>
-          </widget>
-          <packing>
-            <property name="top_attach">19</property>
-            <property name="bottom_attach">20</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label19">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_ankle_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">18</property>
-            <property name="bottom_attach">19</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label18">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_knee_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">17</property>
-            <property name="bottom_attach">18</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label17">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_knee_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">16</property>
-            <property name="bottom_attach">17</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label16">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_hip_1</property>
-          </widget>
-          <packing>
-            <property name="top_attach">15</property>
-            <property name="bottom_attach">16</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label15">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_hip_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">14</property>
-            <property name="bottom_attach">15</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label14">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_hip_1</property>
-          </widget>
-          <packing>
-            <property name="top_attach">13</property>
-            <property name="bottom_attach">14</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label13">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_hip_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">12</property>
-            <property name="bottom_attach">13</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label12">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_wrist_1</property>
-          </widget>
-          <packing>
-            <property name="top_attach">11</property>
-            <property name="bottom_attach">12</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label11">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_wrist_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">10</property>
-            <property name="bottom_attach">11</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label10">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_wrist_1</property>
-          </widget>
-          <packing>
-            <property name="top_attach">9</property>
-            <property name="bottom_attach">10</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label9">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_wrist_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">8</property>
-            <property name="bottom_attach">9</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label8">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_elbow_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">7</property>
-            <property name="bottom_attach">8</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label7">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_elbow_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">6</property>
-            <property name="bottom_attach">7</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label6">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_shoulder_1</property>
-          </widget>
-          <packing>
-            <property name="top_attach">5</property>
-            <property name="bottom_attach">6</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label5">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">l_shoulder_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">4</property>
-            <property name="bottom_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label4">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_shoulder_1</property>
-          </widget>
-          <packing>
-            <property name="top_attach">3</property>
-            <property name="bottom_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label3">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">r_shoulder_0</property>
-          </widget>
-          <packing>
-            <property name="top_attach">2</property>
-            <property name="bottom_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label2">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">neck_1</property>
-          </widget>
-          <packing>
-            <property name="top_attach">1</property>
-            <property name="bottom_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkLabel" id="label1">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">neck_0</property>
-          </widget>
-        </child>
-        <child>
-          <widget class="GtkButton" id="resetButton">
+          <widget class="GtkButton" id="saveButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="label" translatable="yes">Reset</property>
+            <property name="label" translatable="yes">Save Pose</property>
             <property name="response_id">0</property>
-            <signal name="clicked" handler="on_resetButton_clicked"/>
-          </widget>
-          <packing>
-            <property name="top_attach">48</property>
-            <property name="bottom_attach">49</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="GtkButton" id="drawButton">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="label" translatable="yes">Draw</property>
-            <property name="use_underline">True</property>
-            <property name="response_id">0</property>
-            <signal name="clicked" handler="on_drawButton_clicked"/>
+            <signal name="clicked" handler="on_saveButton_clicked"/>
           </widget>
           <packing>
             <property name="left_attach">1</property>
@@ -1188,18 +36,1195 @@
             <signal name="clicked" handler="on_loadButton_clicked"/>
           </widget>
           <packing>
+            <property name="top_attach">48</property>
+            <property name="bottom_attach">49</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkButton" id="drawButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="label" translatable="yes">Draw</property>
+            <property name="use_underline">True</property>
+            <property name="response_id">0</property>
+            <signal name="clicked" handler="on_drawButton_clicked"/>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">49</property>
+            <property name="bottom_attach">50</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkButton" id="resetButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="label" translatable="yes">Reset</property>
+            <property name="response_id">0</property>
+            <signal name="clicked" handler="on_resetButton_clicked"/>
+          </widget>
+          <packing>
+            <property name="top_attach">49</property>
+            <property name="bottom_attach">50</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label1">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">neck_0</property>
+          </widget>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label2">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">neck_1</property>
+          </widget>
+          <packing>
+            <property name="top_attach">1</property>
+            <property name="bottom_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label3">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_shoulder_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">2</property>
+            <property name="bottom_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label4">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_shoulder_1</property>
+          </widget>
+          <packing>
+            <property name="top_attach">3</property>
+            <property name="bottom_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label5">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_shoulder_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">4</property>
+            <property name="bottom_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label6">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_shoulder_1</property>
+          </widget>
+          <packing>
+            <property name="top_attach">5</property>
+            <property name="bottom_attach">6</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label7">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_elbow_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">6</property>
+            <property name="bottom_attach">7</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label8">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_elbow_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">7</property>
+            <property name="bottom_attach">8</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label9">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_wrist_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">8</property>
+            <property name="bottom_attach">9</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label10">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_wrist_1</property>
+          </widget>
+          <packing>
+            <property name="top_attach">9</property>
+            <property name="bottom_attach">10</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label11">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_wrist_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">10</property>
+            <property name="bottom_attach">11</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label12">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_wrist_1</property>
+          </widget>
+          <packing>
+            <property name="top_attach">11</property>
+            <property name="bottom_attach">12</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label13">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_hip_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">12</property>
+            <property name="bottom_attach">13</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label14">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_hip_1</property>
+          </widget>
+          <packing>
+            <property name="top_attach">13</property>
+            <property name="bottom_attach">14</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label15">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_hip_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">14</property>
+            <property name="bottom_attach">15</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label16">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_hip_1</property>
+          </widget>
+          <packing>
+            <property name="top_attach">15</property>
+            <property name="bottom_attach">16</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label17">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_knee_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">16</property>
+            <property name="bottom_attach">17</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label18">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_knee_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">17</property>
+            <property name="bottom_attach">18</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label19">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_ankle_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">18</property>
+            <property name="bottom_attach">19</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label20">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_ankle_1</property>
+          </widget>
+          <packing>
+            <property name="top_attach">19</property>
+            <property name="bottom_attach">20</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label21">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_ankle_0</property>
+          </widget>
+          <packing>
+            <property name="top_attach">20</property>
+            <property name="bottom_attach">21</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label22">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_ankle_1</property>
+          </widget>
+          <packing>
+            <property name="top_attach">21</property>
+            <property name="bottom_attach">22</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label23">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_shoulder_i</property>
+          </widget>
+          <packing>
+            <property name="top_attach">22</property>
+            <property name="bottom_attach">23</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label24">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_shoulder_i</property>
+          </widget>
+          <packing>
+            <property name="top_attach">23</property>
+            <property name="bottom_attach">24</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label25">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_elbow_i</property>
+          </widget>
+          <packing>
+            <property name="top_attach">24</property>
+            <property name="bottom_attach">25</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label26">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_elbow_i</property>
+          </widget>
+          <packing>
+            <property name="top_attach">25</property>
+            <property name="bottom_attach">26</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label27">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_hip_i</property>
+          </widget>
+          <packing>
+            <property name="top_attach">26</property>
+            <property name="bottom_attach">27</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label28">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_hip_i</property>
+          </widget>
+          <packing>
+            <property name="top_attach">27</property>
+            <property name="bottom_attach">28</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label29">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">r_knee_i</property>
+          </widget>
+          <packing>
+            <property name="top_attach">28</property>
+            <property name="bottom_attach">29</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label30">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_knee_i</property>
+          </widget>
+          <packing>
+            <property name="top_attach">29</property>
+            <property name="bottom_attach">30</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label31">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">head</property>
+          </widget>
+          <packing>
+            <property name="top_attach">30</property>
+            <property name="bottom_attach">31</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label32">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">u_arm</property>
+          </widget>
+          <packing>
+            <property name="top_attach">32</property>
+            <property name="bottom_attach">33</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label33">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">shoulder</property>
+          </widget>
+          <packing>
+            <property name="top_attach">31</property>
+            <property name="bottom_attach">32</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label34">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_arm</property>
+          </widget>
+          <packing>
+            <property name="top_attach">33</property>
+            <property name="bottom_attach">34</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label35">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">hand</property>
+          </widget>
+          <packing>
+            <property name="top_attach">34</property>
+            <property name="bottom_attach">35</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label36">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">side</property>
+          </widget>
+          <packing>
+            <property name="top_attach">35</property>
+            <property name="bottom_attach">36</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label37">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">pelvis</property>
+          </widget>
+          <packing>
+            <property name="top_attach">36</property>
+            <property name="bottom_attach">37</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label38">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">u_leg</property>
+          </widget>
+          <packing>
+            <property name="top_attach">37</property>
+            <property name="bottom_attach">38</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label39">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">l_leg</property>
+          </widget>
+          <packing>
+            <property name="top_attach">38</property>
+            <property name="bottom_attach">39</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label40">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">foot</property>
+          </widget>
+          <packing>
+            <property name="top_attach">39</property>
+            <property name="bottom_attach">40</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label41">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">pos_x</property>
+          </widget>
+          <packing>
+            <property name="top_attach">40</property>
+            <property name="bottom_attach">41</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label42">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">pos_y</property>
+          </widget>
+          <packing>
+            <property name="top_attach">41</property>
+            <property name="bottom_attach">42</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label43">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">pos_z</property>
+          </widget>
+          <packing>
+            <property name="top_attach">42</property>
+            <property name="bottom_attach">43</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label44">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">look_x</property>
+          </widget>
+          <packing>
+            <property name="top_attach">43</property>
+            <property name="bottom_attach">44</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label45">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">look_z</property>
+          </widget>
+          <packing>
+            <property name="top_attach">44</property>
+            <property name="bottom_attach">45</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label46">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">fov</property>
+          </widget>
+          <packing>
+            <property name="top_attach">45</property>
+            <property name="bottom_attach">46</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label47">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">scale</property>
+          </widget>
+          <packing>
+            <property name="top_attach">46</property>
+            <property name="bottom_attach">47</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkLabel" id="label48">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">model type</property>
+          </widget>
+          <packing>
             <property name="top_attach">47</property>
             <property name="bottom_attach">48</property>
           </packing>
         </child>
         <child>
-          <widget class="GtkButton" id="saveButton">
+          <widget class="GtkHScale" id="scale0">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="label" translatable="yes">Save Pose</property>
-            <property name="response_id">0</property>
-            <signal name="clicked" handler="on_saveButton_clicked"/>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">1</property>
+            <property name="bottom_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale2">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">2</property>
+            <property name="bottom_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale3">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">3</property>
+            <property name="bottom_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale4">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">4</property>
+            <property name="bottom_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale5">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">5</property>
+            <property name="bottom_attach">6</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale6">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">6</property>
+            <property name="bottom_attach">7</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale7">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">7</property>
+            <property name="bottom_attach">8</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale8">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">8</property>
+            <property name="bottom_attach">9</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale9">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">9</property>
+            <property name="bottom_attach">10</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale10">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">10</property>
+            <property name="bottom_attach">11</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale11">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">11</property>
+            <property name="bottom_attach">12</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale12">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">12</property>
+            <property name="bottom_attach">13</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale13">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">13</property>
+            <property name="bottom_attach">14</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale14">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">14</property>
+            <property name="bottom_attach">15</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale15">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">15</property>
+            <property name="bottom_attach">16</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale16">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">16</property>
+            <property name="bottom_attach">17</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale17">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">17</property>
+            <property name="bottom_attach">18</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale18">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">18</property>
+            <property name="bottom_attach">19</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale19">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">19</property>
+            <property name="bottom_attach">20</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale20">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">20</property>
+            <property name="bottom_attach">21</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale21">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">21</property>
+            <property name="bottom_attach">22</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale22">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">22</property>
+            <property name="bottom_attach">23</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale23">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">23</property>
+            <property name="bottom_attach">24</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale24">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">24</property>
+            <property name="bottom_attach">25</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale25">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">25</property>
+            <property name="bottom_attach">26</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale26">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">26</property>
+            <property name="bottom_attach">27</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale27">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">27</property>
+            <property name="bottom_attach">28</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale28">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">28</property>
+            <property name="bottom_attach">29</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale30">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">1 0 2 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">30</property>
+            <property name="bottom_attach">31</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale31">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">1 0 2 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">31</property>
+            <property name="bottom_attach">32</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale32">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">1 0 2 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">32</property>
+            <property name="bottom_attach">33</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale33">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">1 0 2 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">33</property>
+            <property name="bottom_attach">34</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale34">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0.67000000000000004 0 1.3300000000000001 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">34</property>
+            <property name="bottom_attach">35</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale35">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">1.52 0 3 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">35</property>
+            <property name="bottom_attach">36</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale36">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">1 0 2 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">36</property>
+            <property name="bottom_attach">37</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale37">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">2 0 4 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">37</property>
+            <property name="bottom_attach">38</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale38">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">2 0 4 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">38</property>
+            <property name="bottom_attach">39</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale39">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">1 0 2 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">39</property>
+            <property name="bottom_attach">40</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale40">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -4 4 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">40</property>
+            <property name="bottom_attach">41</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale41">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0.5 0 2 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">41</property>
+            <property name="bottom_attach">42</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale42">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">4 -6 6 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">42</property>
+            <property name="bottom_attach">43</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale43">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -4 4 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">43</property>
+            <property name="bottom_attach">44</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale44">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -6 6 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">44</property>
+            <property name="bottom_attach">45</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale45">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">30 0 60 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">45</property>
+            <property name="bottom_attach">46</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale46">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">1 0 2 1 10 0</property>
+            <property name="digits">2</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">46</property>
+            <property name="bottom_attach">47</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkHScale" id="scale29">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">0 -90 90 1 10 0</property>
+            <property name="value_pos">GTK_POS_LEFT</property>
+          </widget>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="right_attach">2</property>
+            <property name="top_attach">29</property>
+            <property name="bottom_attach">30</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="GtkComboBox" id="typeComboBox">
+            <property name="visible">True</property>
+            <property name="items" translatable="yes">cylinder
+ellipsoid
+stick</property>
+            <signal name="changed" handler="on_typeComboBox_changed"/>
           </widget>
           <packing>
             <property name="left_attach">1</property>
