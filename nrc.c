@@ -1,5 +1,7 @@
 #include "nrc.h"
 
+#include <stdio.h>
+
 void powell(float p[], float **xi, int n, float ftol, int *iter, float *fret, float (*func)(float [], IplImage*), IplImage *image) {
   int i, ibig, j;
   float del, fp, fptt, t, *pt, *ptt, *xit;

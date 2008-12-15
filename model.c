@@ -237,14 +237,15 @@ void my_gluCylinder(float radius, model_segment s) {
   }
   
   glTranslatef(0.0, 0.0, length);
+
+  // we are at a new point, so make sure it is above the floor
   glGetFloatv(GL_MODELVIEW_MATRIX, modelview);
   // modelview 12-15 is homogenous coords (x,y,z,w)
   // for (0,0,0) translated to world coords, so y/w = yval
   yval = modelview[13]/modelview[15];
 
-  if (yval < 0) {
+  if (yval < 0)
     floor_error += pow(yval, 8.0);
-  }
 }
 void rotate_internal(float angle) {
   rotate_z(angle);

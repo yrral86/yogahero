@@ -14,13 +14,6 @@
 float error_function(float p[], IplImage *image);
 
 /**
-   Calculates the error from points being below floor
-
-   @return error
-  */
-float floor_error();
-
-/**
    Calculates the error from joint angle constraints
 
    @param p the model to calculate the error for
@@ -40,5 +33,8 @@ float symmetric_difference(IplImage *img1, IplImage *img2);
 
 
 void project (IplImage*, float*);
+
+void error_func_set_floor_weight(float);
+void error_func_set_angle_weight(float);
 
 #endif

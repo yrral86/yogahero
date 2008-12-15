@@ -7,6 +7,7 @@
 #include <highgui.h>
 #include <gtk/gtk.h>
 #include <gtk/gtkgl.h>
+#include <glib/gprintf.h>
 
 void match (IplImage *image) {
   int iterations, n, i, j;
