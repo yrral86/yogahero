@@ -63,7 +63,6 @@ void viewer_draw() {
 
   viewer_set_vector();
   model_set_vector(vector);
-  model_set_type(cylinder);
 
   glcontext = gtk_widget_get_gl_context (area);
   gldrawable = gtk_widget_get_gl_drawable (area);
@@ -187,6 +186,8 @@ int main (int argc, char **argv) {
   model_init();
 
   model_set_zero();
+
+  model_set_type(ellipsoid);
 
   viewer_set_ranges();
 

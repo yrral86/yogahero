@@ -9,6 +9,7 @@
 
 typedef enum {
   cylinder,
+  ellipsoid,
   stick
 } model_type;
 

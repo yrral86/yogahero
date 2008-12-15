@@ -202,13 +202,29 @@ void model_draw_legs() {
 // is uniform, so we only need to ensure
 // we can't look down the pipe and see black
 void my_gluCylinder(float radius, model_segment s) {
+  GLUquadricObj *quad;
   float length = vector[model_segment_to_length(s)];
   if (visible[s]) {
-    GLUquadricObj *quad;
-    quad = gluNewQuadric();
-    gluDisk(quad, 0.0, radius, 32, 32);
-    gluCylinder(quad, radius, radius, length, 32, 32);
-    gluDeleteQuadric(quad);
+    if (type == stick) {
+
+    } else {
+      quad = gluNewQuadric();
+      if (type == ellipsoid) {
+	// begin draw using ellipsoids
+	glPushMatrix();
+	glTranslatef(0.0, 0.0, length/2.0);
+	glScalef(radius, radius, length/2.0);
+	gluSphere(quad, 1.0, 32, 32);
+	glPopMatrix();
+      } else if (type == cylinder) {
+	// begin drawing using cylinders
+	gluDisk(quad, 0.0, radius, 32, 32);
+	gluCylinder(quad, radius, radius, length, 32, 32);
+      } else {
+	printf("Invalid model type, please set before drawing\n");
+      }
+      gluDeleteQuadric(quad);
+    }
   }
   
   glTranslatef(0.0, 0.0, length);
