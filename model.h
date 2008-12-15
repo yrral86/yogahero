@@ -133,4 +133,7 @@ void model_set_type(model_type);
 void model_to_file(char*);
 void model_from_file(char*);
 
+// floor error getter
+float model_get_floor_error();
+
 #endif

@@ -14,10 +14,14 @@ static int visible[MODEL_SEGMENTS];
 static model_type type;
 
 static float correction_angle;
+static float floor_error;
+
 
 void model_draw_from_vector() {
   float scale;
   float sideangle;
+
+  floor_error = 0.0;
 
   // calculate the angle between the side segment and vertical
   sideangle = asin((vector[shoulder_s_l] - 0.5*vector[pelvis_s_l])
@@ -202,6 +206,8 @@ void model_draw_legs() {
 // is uniform, so we only need to ensure
 // we can't look down the pipe and see black
 void my_gluCylinder(float radius, model_segment s) {
+  float modelview[16];
+  float yval;
   GLUquadricObj *quad;
   float length = vector[model_segment_to_length(s)];
   if (visible[s]) {
@@ -231,6 +237,14 @@ void my_gluCylinder(float radius, model_segment s) {
   }
   
   glTranslatef(0.0, 0.0, length);
+  glGetFloatv(GL_MODELVIEW_MATRIX, modelview);
+  // modelview 12-15 is homogenous coords (x,y,z,w)
+  // for (0,0,0) translated to world coords, so y/w = yval
+  yval = modelview[13]/modelview[15];
+
+  if (yval < 0) {
+    floor_error += pow(yval, 8.0);
+  }
 }
 void rotate_internal(float angle) {
   rotate_z(angle);
@@ -495,4 +509,8 @@ void model_from_file(char *fn) {
   }
 
   fclose(in);
+}
+
+float model_get_floor_error() {
+  return floor_error;
 }
