@@ -61,7 +61,7 @@ void model_draw_from_vector() {
 
   // draw left side
   rotate_y(90 - sideangle);
-  my_gluCylinder(0.15, l_side_s);
+  my_gluCylinder(0.1, l_side_s);
 
   // push left shoulder
   glPushMatrix();
@@ -135,7 +135,7 @@ void model_draw_from_vector() {
 
   // draw right side
   rotate_y(90 + sideangle);
-  my_gluCylinder(0.15, r_side_s);
+  my_gluCylinder(0.1, r_side_s);
 
   glFinish();
 }
@@ -165,7 +165,7 @@ void model_draw_legs() {
   // draw pelvis
   rotate_y(-90 + vector[r_hip_j_0]);
   rotate_z(vector[r_hip_j_1]);
-  my_gluCylinder(0.15, pelvis_s);
+  my_gluCylinder(0.25, pelvis_s);
 
   // push left hip
   glPushMatrix();
