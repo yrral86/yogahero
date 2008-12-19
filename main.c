@@ -9,13 +9,99 @@
 #include <gtk/gtkgl.h>
 #include <glib/gprintf.h>
 
-void match (IplImage *image) {
-  int iterations, n, i, j;
+const int n = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA;
+void match (IplImage*, int*);
+
+void alignTorso(IplImage *image) {
+  int i, cam = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS;
+  IplImage *buffer = cvCreateImage(cvGetSize(image), 8, 1);
+  IplImage *and = cvCreateImage(cvGetSize(image), 8, 1);
+  CvMoments *m = malloc(sizeof(CvMoments));
+  CvPoint2D32f mCM, aCM;
+  float dx, dy;
+  float mag;
+  float mdx, mdz;
+  float *p;
+  float error, olderror;
+
+  // hide everything except torso segments
+  for (i = 0; i < MODEL_SEGMENTS; i++)
+    if (i != pelvis_s &&
+	i != r_side_s &&
+	i != l_side_s &&
+	i != r_shoulder_s &&
+	i != l_shoulder_s)
+      model_set_invisible(i);
+
+  p = model_get_vector();
+
+  project(buffer, p - 1);
+
+  error = symmetric_difference(image, buffer);
+  olderror = 2*error;
+
+  while (olderror - error > 0) {
+    cvAnd(buffer, image, and, NULL);
+
+    cvMoments(buffer, m, 1);
+    mCM.x = cvGetSpatialMoment(m, 1, 0)/cvGetSpatialMoment(m, 0, 0);
+    mCM.y = cvGetSpatialMoment(m, 0, 1)/cvGetSpatialMoment(m, 0, 0);
+
+    cvMoments(and, m, 1);
+    aCM.x = cvGetSpatialMoment(m, 1, 0)/cvGetSpatialMoment(m, 0, 0);
+    aCM.y = cvGetSpatialMoment(m, 0, 1)/cvGetSpatialMoment(m, 0, 0);
+
+    // find pixel difference
+    dy = mCM.y - aCM.y;
+    dx = mCM.x - aCM.x;
+
+    // adjust y
+    p[cam + c_pos_y] += 0.01*dy/p[cam + c_scale];
+
+    // calculate "x" movement
+    // find line to move along (negative inverse of dz/dx)
+    mdx = p[cam+c_look_z]-p[cam+c_pos_z];
+    mdz = p[cam+c_pos_x]-p[cam+c_look_x];
+
+    // normalize so we move 1 unit
+    mag = sqrt(mdx*mdx + mdz*mdz);
+    mdx /= mag;
+    mdz /= mag;
+
+    // move "x" by adjusting x and z
+    p[cam+c_pos_x] += 0.01*p[cam+c_scale]*mdx;
+    p[cam+c_look_x] += 0.01*p[cam+c_scale]*mdx;
+    p[cam+c_pos_z] += 0.01*p[cam+c_scale]*mdz;
+    p[cam+c_look_z] += 0.01*p[cam+c_scale]*mdz;
+
+    project(buffer, p - 1);
+
+    olderror = error;
+    error = symmetric_difference(image, buffer);
+  }
+
+  // undo last set of changes, as it increased our error
+  p[cam + c_pos_y] -= 0.01*dy/p[cam + c_scale];
+  p[cam+c_pos_x] -= 0.01*p[cam+c_scale]*mdx;
+  p[cam+c_look_x] -= 0.01*p[cam+c_scale]*mdx;
+  p[cam+c_pos_z] -= 0.01*p[cam+c_scale]*mdz;
+  p[cam+c_look_z] -= 0.01*p[cam+c_scale]*mdz;
+
+  cvReleaseImage(&buffer);
+  cvReleaseImage(&and);
+  free(m);
+
+  // unhide everything
+  for (i = 0; i < MODEL_SEGMENTS; i++)
+    model_set_visible(i);
+}
+
+void match (IplImage *image, int *enabled) {
+  int iterations, i, j;
   float returnval;
   float *p;
   float *mp;
 
-  n = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA;
   mp = model_get_vector();
   p = malloc(n*sizeof(float));
 
@@ -25,6 +111,7 @@ void match (IplImage *image) {
 
   // adjust pointer to be p[1]..p[n]
   p--;
+  enabled--;
 
   float **xi;
 
@@ -36,7 +123,10 @@ void match (IplImage *image) {
     xi[i]--;
     for (j = 1; j <= n; j++)
       if (i == j)
-	xi[i][j] = 1;
+	if (enabled[i])
+	  xi[i][j] = 1;
+	else
+	  xi[i][j] = 0;
       else
 	xi[i][j] = 0;
   }
@@ -55,6 +145,8 @@ int main (int argc, char **argv) {
   IplImage *image;
   IplImage *buffer;
   char imagefn[100], posefn[100];
+  int i;
+  int enabled[n];
 
   GdkGLConfig *glconfig;
   GdkGLContext *glcontext;
@@ -106,9 +198,19 @@ int main (int argc, char **argv) {
   model_set_type(ellipsoid);
   model_from_file(posefn);
 
+
+  printf("error before alignTorso: %g\n", error_function(model_get_vector() - 1, image));
+  alignTorso(image);
+  printf("error after alignTorso: %g\n", error_function(model_get_vector() - 1, image));
+
+  for (i = 0; i < n; i++)
+    enabled[i] = 1;
+
+  enabled[shoulder_s_l] = 0;
+
   // match image to pose
   printf("error before match: %g\n", error_function(model_get_vector() - 1, image));
-  match(image);
+  match(image, enabled);
   printf("error after match: %g\n", error_function(model_get_vector() - 1, image));
 
   // save model as image
