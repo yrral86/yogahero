@@ -14,6 +14,7 @@ void match (IplImage*, int*);
 
 void alignTorso(IplImage *image) {
   int i, cam = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS;
+  int enabled[n];
   IplImage *buffer = cvCreateImage(cvGetSize(image), 8, 1);
   IplImage *and = cvCreateImage(cvGetSize(image), 8, 1);
   CvMoments *m = malloc(sizeof(CvMoments));
@@ -23,6 +24,7 @@ void alignTorso(IplImage *image) {
   float mdx, mdz;
   float *p;
   float error, olderror;
+  float oldp[n];
 
   // hide everything except torso segments
   for (i = 0; i < MODEL_SEGMENTS; i++)
@@ -32,6 +34,14 @@ void alignTorso(IplImage *image) {
 	i != r_shoulder_s &&
 	i != l_shoulder_s)
       model_set_invisible(i);
+
+  // disable everything except side and pelvis lengths for optimization
+  for (i = 0; i < n; i++)
+    if (i != side_s_l &&
+	i != pelvis_s_l)
+      enabled[i] = 0;
+    else
+      enabled[i] = 1;
 
   p = model_get_vector();
 
@@ -55,6 +65,10 @@ void alignTorso(IplImage *image) {
     dy = mCM.y - aCM.y;
     dx = mCM.x - aCM.x;
 
+    // save old p
+    for (i = 0; i < n; i++)
+      oldp[i] = p[i];
+
     // adjust y
     p[cam + c_pos_y] += 0.01*dy/p[cam + c_scale];
 
@@ -74,6 +88,10 @@ void alignTorso(IplImage *image) {
     p[cam+c_pos_z] += 0.01*p[cam+c_scale]*mdz;
     p[cam+c_look_z] += 0.01*p[cam+c_scale]*mdz;
 
+    // optimize side and pelvis lengths
+    // p will be ok since it is a pointer to the static variable
+    match(image, enabled);
+
     project(buffer, p - 1);
 
     olderror = error;
@@ -81,11 +99,8 @@ void alignTorso(IplImage *image) {
   }
 
   // undo last set of changes, as it increased our error
-  p[cam + c_pos_y] -= 0.01*dy/p[cam + c_scale];
-  p[cam+c_pos_x] -= 0.01*p[cam+c_scale]*mdx;
-  p[cam+c_look_x] -= 0.01*p[cam+c_scale]*mdx;
-  p[cam+c_pos_z] -= 0.01*p[cam+c_scale]*mdz;
-  p[cam+c_look_z] -= 0.01*p[cam+c_scale]*mdz;
+  for (i = 0; i < n; i++)
+    p[i] = oldp[i];
 
   cvReleaseImage(&buffer);
   cvReleaseImage(&and);
@@ -203,6 +218,7 @@ int main (int argc, char **argv) {
   alignTorso(image);
   printf("error after alignTorso: %g\n", error_function(model_get_vector() - 1, image));
 
+
   for (i = 0; i < n; i++)
     enabled[i] = 1;
 
@@ -219,11 +235,11 @@ int main (int argc, char **argv) {
   cvFlip(buffer, NULL, 0);
   cvSaveImage("pose.png", buffer);
 
-  // end opengl
-  gdk_gl_drawable_gl_end(gldrawable);
-
   // save model as file
   model_to_file("pose.out");
+
+  // end opengl
+  gdk_gl_drawable_gl_end(gldrawable);
 
   // cleanup images
   cvReleaseImage(&image);
