@@ -15,8 +15,16 @@ float error_function(float p[], IplImage *image) {
   project(buffer, p);
 
   sd = symmetric_difference(image, buffer);
-  fe = model_get_floor_error();
-  ae = angle_error(p);
+
+  if (floorWeight > 0)
+    fe = model_get_floor_error();
+  else
+    fe = 0.0;
+
+  if (angleWeight > 0)
+    ae = angle_error(p);
+  else
+    ae = 0.0;
 
   /*
   sprintf(fn, "out/%d.model", count);

@@ -11,6 +11,7 @@
 
 const int n = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA;
 void match (IplImage*, int*);
+static int torsoscale = 0;
 
 void alignTorso(IplImage *image) {
   int i, cam = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS;
@@ -35,13 +36,16 @@ void alignTorso(IplImage *image) {
 	i != l_shoulder_s)
       model_set_invisible(i);
 
-  // disable everything except side and pelvis lengths for optimization
+  // disable everything except side+pelvis lengths and scale for optimization
   for (i = 0; i < n; i++)
     if (i != side_s_l &&
 	i != pelvis_s_l)
       enabled[i] = 0;
     else
       enabled[i] = 1;
+
+  if (torsoscale)
+    enabled[cam + c_scale] = 1;
 
   p = model_get_vector();
 
@@ -88,7 +92,7 @@ void alignTorso(IplImage *image) {
     p[cam+c_pos_z] += 0.01*p[cam+c_scale]*mdz;
     p[cam+c_look_z] += 0.01*p[cam+c_scale]*mdz;
 
-    // optimize side and pelvis lengths
+    // optimize side + pelvis lengths and scale
     // p will be ok since it is a pointer to the static variable
     match(image, enabled);
 
@@ -170,12 +174,21 @@ int main (int argc, char **argv) {
   
   if (argc < 3) {
     g_printf("Usage: ./match imagefile posefile [-c] [-f n] [-a n]\n");
-    g_printf("-c: enable camera alignment\n");
+    g_printf("-s: enable scale in alignTorso\n");
     g_printf("-f n: enable floor constraints with a weight of n\n");
     g_printf("-a n: enable angle constraints with a weight of n\n");
     exit(0);
   }
   
+  for (i = 3; i < argc; i++) {
+    if (strcmp(argv[i], "-s") == 0)
+      torsoscale = 1;
+    if (strcmp(argv[i], "-f") == 0)
+      error_func_set_floor_weight(atof(argv[++i]));
+    if (strcmp(argv[i], "-a") == 0)
+      error_func_set_angle_weight(atof(argv[++i]));
+  }
+
   // copy off our arguments
   strcpy(imagefn, argv[1]);
   strcpy(posefn, argv[2]);
