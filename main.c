@@ -234,7 +234,7 @@ int main (int argc, char **argv) {
   
   if (argc < 3) {
     g_printf("Usage: ./match imagefile posefile [-c] [-f n] [-a n]\n");
-    g_printf("-a: just run alignTorso and stop\n");
+    g_printf("-n: no match- just run alignTorso and stop\n");
     g_printf("-s: enable scale in alignTorso\n");
     g_printf("-f n: enable floor constraints with a weight of n\n");
     g_printf("-a n: enable angle constraints with a weight of n\n");
@@ -244,7 +244,7 @@ int main (int argc, char **argv) {
   for (i = 3; i < argc; i++) {
     if (strcmp(argv[i], "-s") == 0)
       torsoscale = 1;
-    if (strcmp(argv[i], "-s") == 0)
+    if (strcmp(argv[i], "-n") == 0)
       alignonly = 1;
     if (strcmp(argv[i], "-f") == 0)
       error_func_set_floor_weight(atof(argv[++i]));
