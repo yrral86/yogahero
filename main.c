@@ -230,13 +230,22 @@ int main (int argc, char **argv) {
   model_set_type(ellipsoid);
   model_from_file(posefn);
 
-  initialsd = error_function(model_get_vector() - 1, image);
+  buffer = cvCreateImage(cvGetSize(image), 8, 1);
+
+  project(buffer, model_get_vector() - 1);
+  initialsd = symmetric_difference(buffer, image);
+
   printf("error before alignTorso: %g\n", initialsd);
+
   g_timer_start(timer);
   alignTorso(image);
   g_timer_stop(timer);
+
   aligntime = g_timer_elapsed(timer, NULL);
-  alignsd = error_function(model_get_vector() - 1, image);
+
+  project(buffer, model_get_vector() - 1);
+  alignsd = symmetric_difference(buffer, image);
+
   printf("error after alignTorso: %g\n", alignsd);
   printf("time for alignTorso: %gs\n", aligntime);
 
@@ -249,15 +258,18 @@ int main (int argc, char **argv) {
   g_timer_start(timer);
   match(image, enabled);
   g_timer_stop(timer);
+
   matchtime = g_timer_elapsed(timer, NULL);
-  matchsd = error_function(model_get_vector() - 1, image);
+
+  project(buffer, model_get_vector() - 1);
+  matchsd = symmetric_difference(buffer, image);
+
   printf("error after match: %g\n", matchsd);
   printf("time for match: %gs\n", matchtime);
   printf("total time: %gs\n", matchtime + aligntime);
 
 
   // save model as image
-  buffer = cvCreateImage(cvGetSize(image), 8, 1);
   project(buffer, model_get_vector() - 1);
   cvFlip(buffer, NULL, 0);
   cvSaveImage("pose.png", buffer);
