@@ -284,7 +284,7 @@ void model_init() {
   min[hip_c_0] = -60.0;
   max[hip_c_0] = 150.0;
   min[hip_c_1] = -50.0;
-  max[hip_c_1] = 100.0;
+  max[hip_c_1] = 190.0;
   min[knee_c_0] = -10.0;
   max[knee_c_0] = 170.0;
   min[ankle_c_0] = -60.0;
