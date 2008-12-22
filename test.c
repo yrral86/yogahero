@@ -93,7 +93,7 @@ void move_image(char *imagefn, TEST_TYPE type) {
   GString *command;
 
   newFn = g_string_new(g_path_get_basename(imagefn));;
-  command = g_string_new("mv match.png images/output/");
+  command = g_string_new("mv pose.png images/output/");
 
   // shave off .png
   g_string_truncate(newFn, newFn->len - 4);
