@@ -7,6 +7,7 @@
 #include <highgui.h>
 #include <gtk/gtk.h>
 #include <gtk/gtkgl.h>
+#include <glib.h>
 #include <glib/gprintf.h>
 
 const int n = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA;
@@ -167,6 +168,8 @@ int main (int argc, char **argv) {
   char imagefn[100], posefn[100];
   int i;
   int enabled[n];
+  float initialsd, alignsd, matchsd, aligntime, matchtime;
+  GTimer *timer = g_timer_new();
 
   GdkGLConfig *glconfig;
   GdkGLContext *glcontext;
@@ -227,11 +230,15 @@ int main (int argc, char **argv) {
   model_set_type(ellipsoid);
   model_from_file(posefn);
 
-
-  printf("error before alignTorso: %g\n", error_function(model_get_vector() - 1, image));
+  initialsd = error_function(model_get_vector() - 1, image);
+  printf("error before alignTorso: %g\n", initialsd);
+  g_timer_start(timer);
   alignTorso(image);
-  printf("error after alignTorso: %g\n", error_function(model_get_vector() - 1, image));
-
+  g_timer_stop(timer);
+  aligntime = g_timer_elapsed(timer, NULL);
+  alignsd = error_function(model_get_vector() - 1, image);
+  printf("error after alignTorso: %g\n", alignsd);
+  printf("time for alignTorso: %gs\n", aligntime);
 
   for (i = 0; i < n; i++)
     enabled[i] = 1;
@@ -239,9 +246,15 @@ int main (int argc, char **argv) {
   enabled[shoulder_s_l] = 0;
 
   // match image to pose
-  printf("error before match: %g\n", error_function(model_get_vector() - 1, image));
+  g_timer_start(timer);
   match(image, enabled);
-  printf("error after match: %g\n", error_function(model_get_vector() - 1, image));
+  g_timer_stop(timer);
+  matchtime = g_timer_elapsed(timer, NULL);
+  matchsd = error_function(model_get_vector() - 1, image);
+  printf("error after match: %g\n", matchsd);
+  printf("time for match: %gs\n", matchtime);
+  printf("total time: %gs\n", matchtime + aligntime);
+
 
   // save model as image
   buffer = cvCreateImage(cvGetSize(image), 8, 1);
@@ -251,6 +264,12 @@ int main (int argc, char **argv) {
 
   // save model as file
   model_to_file("pose.out");
+
+  // save timer/error data
+  FILE *out = fopen("match.data", "w");
+  fprintf(out, "%g\t%g\t%g\t%g\t%g\t%g", initialsd, alignsd, matchsd,
+	  aligntime, matchtime, aligntime+matchtime);
+  fclose(out);
 
   // end opengl
   gdk_gl_drawable_gl_end(gldrawable);
