@@ -355,7 +355,6 @@ int main (int argc, char **argv) {
   // cleanup gl
   g_object_unref(glconfig);
   g_object_unref(glcontext);
-  g_object_unref(timer);
  
   return 0;
 }
