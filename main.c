@@ -272,10 +272,10 @@ int main (int argc, char **argv) {
   // save model as image
   project(buffer, model_get_vector() - 1);
   cvFlip(buffer, NULL, 0);
-  cvSaveImage("pose.png", buffer);
+  cvSaveImage("match.png", buffer);
 
   // save model as file
-  model_to_file("pose.out");
+  model_to_file("match.pose");
 
   // save timer/error data
   FILE *out = fopen("match.data", "w");
