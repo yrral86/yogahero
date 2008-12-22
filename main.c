@@ -13,6 +13,7 @@
 const int n = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA;
 void match (IplImage*, int*);
 static int torsoscale = 0;
+static int alignonly = 0;
 
 void alignTorso(IplImage *image) {
   int i, cam = MODEL_ANGLES + MODEL_SEGMENT_LENGTHS;
@@ -28,19 +29,11 @@ void alignTorso(IplImage *image) {
   float error, olderror;
   float oldp[n];
 
-  // hide everything except torso segments
-  for (i = 0; i < MODEL_SEGMENTS; i++)
-    if (i != pelvis_s &&
-	i != r_side_s &&
-	i != l_side_s &&
-	i != r_shoulder_s &&
-	i != l_shoulder_s)
-      model_set_invisible(i);
-
   // disable everything except side+pelvis lengths for optimization
   for (i = 0; i < n; i++)
     if (i != side_s_l &&
-	i != pelvis_s_l)
+	i != pelvis_s_l &&
+	i != head_s_l)
       enabled[i] = 0;
     else
       enabled[i] = 1;
@@ -56,6 +49,69 @@ void alignTorso(IplImage *image) {
   error = symmetric_difference(image, buffer);
   olderror = 2*error;
 
+  // begin initial align based on com of model and image
+  while (olderror - error > 0) {
+    cvMoments(buffer, m, 1);
+    mCM.x = cvGetSpatialMoment(m, 1, 0)/cvGetSpatialMoment(m, 0, 0);
+    mCM.y = cvGetSpatialMoment(m, 0, 1)/cvGetSpatialMoment(m, 0, 0);
+
+    cvMoments(image, m, 1);
+    aCM.x = cvGetSpatialMoment(m, 1, 0)/cvGetSpatialMoment(m, 0, 0);
+    aCM.y = cvGetSpatialMoment(m, 0, 1)/cvGetSpatialMoment(m, 0, 0);
+
+    // find pixel difference
+    dy = mCM.y - aCM.y;
+    dx = mCM.x - aCM.x;
+
+    // save old p
+    for (i = 0; i < n; i++)
+      oldp[i] = p[i];
+
+    // adjust y
+    p[cam + c_pos_y] += 0.001*dy/p[cam + c_scale];
+
+    // calculate "x" movement
+    // find line to move along (negative inverse of dz/dx)
+    mdx = p[cam+c_look_z]-p[cam+c_pos_z];
+    mdz = p[cam+c_pos_x]-p[cam+c_look_x];
+
+    // normalize so we move 1 unit
+    mag = sqrt(mdx*mdx + mdz*mdz);
+    mdx /= mag;
+    mdz /= mag;
+
+    // move "x" by adjusting x and z
+    p[cam+c_pos_x] += 0.01*p[cam+c_scale]*mdx;
+    p[cam+c_look_x] += 0.01*p[cam+c_scale]*mdx;
+    p[cam+c_pos_z] += 0.01*p[cam+c_scale]*mdz;
+    p[cam+c_look_z] += 0.01*p[cam+c_scale]*mdz;
+
+    project(buffer, p - 1);
+
+    olderror = error;
+    error = symmetric_difference(image, buffer);
+  }
+
+  // undo last set of changes, as it increased our error
+  for (i = 0; i < n; i++)
+    p[i] = oldp[i];
+
+  // hide everything except torso segments
+  for (i = 0; i < MODEL_SEGMENTS; i++)
+    if (i != pelvis_s &&
+	i != r_side_s &&
+	i != l_side_s &&
+	i != r_shoulder_s &&
+	i != l_shoulder_s &&
+	i != head_s)
+      model_set_invisible(i);
+
+  project(buffer, p - 1);
+
+  error = symmetric_difference(image, buffer);
+  olderror = 2*error;
+
+  // begin finer alignment
   while (olderror - error > 0) {
     cvAnd(buffer, image, and, NULL);
 
@@ -76,7 +132,7 @@ void alignTorso(IplImage *image) {
       oldp[i] = p[i];
 
     // adjust y
-    p[cam + c_pos_y] += 0.01*dy/p[cam + c_scale];
+    p[cam + c_pos_y] += 0.001*dy/p[cam + c_scale];
 
     // calculate "x" movement
     // find line to move along (negative inverse of dz/dx)
@@ -178,6 +234,7 @@ int main (int argc, char **argv) {
   
   if (argc < 3) {
     g_printf("Usage: ./match imagefile posefile [-c] [-f n] [-a n]\n");
+    g_printf("-a: just run alignTorso and stop\n");
     g_printf("-s: enable scale in alignTorso\n");
     g_printf("-f n: enable floor constraints with a weight of n\n");
     g_printf("-a n: enable angle constraints with a weight of n\n");
@@ -187,6 +244,8 @@ int main (int argc, char **argv) {
   for (i = 3; i < argc; i++) {
     if (strcmp(argv[i], "-s") == 0)
       torsoscale = 1;
+    if (strcmp(argv[i], "-s") == 0)
+      alignonly = 1;
     if (strcmp(argv[i], "-f") == 0)
       error_func_set_floor_weight(atof(argv[++i]));
     if (strcmp(argv[i], "-a") == 0)
@@ -249,28 +308,31 @@ int main (int argc, char **argv) {
   printf("error after alignTorso: %g\n", alignsd);
   printf("time for alignTorso: %gs\n", aligntime);
 
-  for (i = 0; i < n; i++)
-    enabled[i] = 1;
+  if (!alignonly) {
+    for (i = 0; i < n; i++)
+      enabled[i] = 1;
+    
+    enabled[shoulder_s_l] = 0;
+    
+    // match image to pose
+    g_timer_start(timer);
+    match(image, enabled);
+    g_timer_stop(timer);
+    
+    matchtime = g_timer_elapsed(timer, NULL);
+    
+  } else
+    matchtime = 0.0;
 
-  enabled[shoulder_s_l] = 0;
-
-  // match image to pose
-  g_timer_start(timer);
-  match(image, enabled);
-  g_timer_stop(timer);
-
-  matchtime = g_timer_elapsed(timer, NULL);
-
-  project(buffer, model_get_vector() - 1);
-  matchsd = symmetric_difference(buffer, image);
-
-  printf("error after match: %g\n", matchsd);
-  printf("time for match: %gs\n", matchtime);
-  printf("total time: %gs\n", matchtime + aligntime);
+    project(buffer, model_get_vector() - 1);
+    matchsd = symmetric_difference(buffer, image);
+    
+    printf("error after match: %g\n", matchsd);
+    printf("time for match: %gs\n", matchtime);
+    printf("total time: %gs\n", matchtime + aligntime);
 
 
   // save model as image
-  project(buffer, model_get_vector() - 1);
   cvFlip(buffer, NULL, 0);
   cvSaveImage("match.png", buffer);
 
@@ -293,6 +355,7 @@ int main (int argc, char **argv) {
   // cleanup gl
   g_object_unref(glconfig);
   g_object_unref(glcontext);
+  g_object_unref(timer);
  
   return 0;
 }
