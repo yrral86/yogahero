@@ -1,0 +1,10 @@
+*.o
+findmatch
+modelviewer
+test
+rawdata/
+trimmeddata/
+pose.png
+pose.out
+match.data
+*~
