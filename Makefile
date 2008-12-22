@@ -23,8 +23,8 @@ CV_FLAGS = `pkg-config --cflags opencv`
 
 CV_LIBS = `pkg-config --libs opencv`
 
-C_FLAGS = -O3
-#C_FLAGS = -g -Wall
+#C_FLAGS = -O3
+C_FLAGS = -g -Wall
 
 DEPS = \
 	freeglut3-dev \
@@ -48,7 +48,7 @@ test: test.c
 	gcc -c $< -o $@ $(CV_FLAGS) $(C_FLAGS)
 
 clean:
-	rm *~ findmatch modelviewer $(MATCH_OBJECTS) $(OBJECTS) pose.out pose.png
+	rm *~ findmatch modelviewer $(MATCH_OBJECTS) $(OBJECTS) match.pose match.png match.data
 
 ubuntudeps:
 	sudo apt-get install $(DEPS)

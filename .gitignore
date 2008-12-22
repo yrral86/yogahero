@@ -4,7 +4,7 @@ modelviewer
 test
 rawdata/
 trimmeddata/
-pose.png
-pose.out
+match.png
+match.pose
 match.data
 *~
