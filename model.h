@@ -62,7 +62,17 @@ typedef enum {
   shoulder_c_i,
   elbow_c_i,
   hip_c_i,
-  knee_c_i
+  knee_c_i,
+  head_s_c,
+  shoulder_s_c,
+  u_arm_s_c,
+  l_arm_s_c,
+  hand_s_c,
+  side_s_c,
+  pelvis_s_c,
+  u_leg_s_c,
+  l_leg_s_c,
+  foot_s_c
 } model_angle_constraint;
 
 typedef enum {
@@ -114,6 +124,7 @@ void model_init();
 // constraint functions
 float model_get_min(model_angle_constraint);
 float model_get_max(model_angle_constraint);
+model_segment_length model_constraint_to_segment(model_angle_constraint);
 model_angle_constraint model_angle_to_constraint(model_angle);
 
 // visibility functions

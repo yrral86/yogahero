@@ -39,14 +39,18 @@ float error_function(float p[], IplImage *image) {
 }
 
 float angle_error(float *p) {
-  int i;
+  int i, j;
   float error = 0.0;
 
-  for (i = 0; i < MODEL_ANGLES; i++)
-    if (p[i] < model_get_min(model_angle_to_constraint(i)))
-      error += pow(model_get_min(model_angle_to_constraint(i)) - p[i], 8.0);
-    else if (p[i] > model_get_max(model_angle_to_constraint(i)))
-      error += pow(p[i] - model_get_max(model_angle_to_constraint(i)), 8.0);
+  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENT_LENGTHS; i++)
+    if (i < MODEL_ANGLES)
+      j = model_angle_to_constraint(i);
+    else
+      j = i - MODEL_ANGLES + MODEL_CONSTRAINTS;
+    if (p[i] < model_get_min(j))
+      error += pow(model_get_min(j) - p[i], 8.0);
+    else if (p[i] > model_get_max(j))
+      error += pow(p[i] - model_get_max(j), 8.0);
 
   return error;
 }

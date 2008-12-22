@@ -29,6 +29,11 @@ void powell(float p[], float **xi, int n, float ftol, int *iter, float *fret, fl
       fptt = (*fret);
       /// minimize along the direction
       linmin(p, xit, n, fret, func, image);
+
+      // added so we can give up gracefully
+      if (*fret == -1)
+	return;
+
       /// record largest decrease so far
       if (fabs(fptt - (*fret)) > del) {
         del = fabs(fptt - (*fret));
@@ -64,6 +69,11 @@ void powell(float p[], float **xi, int n, float ftol, int *iter, float *fret, fl
       if (t < 0.0) {
         /// minimize in this direction
         linmin(p, xit, n, fret, func, image);
+
+	// added so we can give up gracefully
+	if (*fret == -1)
+	  return;
+
         /// save this direction
         for (j = 1; j <= n; j++) {
           xi[j][ibig] = xi[j][n];
@@ -85,6 +95,11 @@ void linmin(float p[], float xi[], int n, float *fret, float (*func)(float [], I
   xx = 0.1*dot;
   mnbrak(p, xi, n, &ax, &xx, &bx, &fa, &fx, &fb, func, image);
   *fret = brent(p, xi, n, ax, xx, bx, func, TOL, &xmin, image);
+
+  // added so we can give up gracefully
+  if (*fret == -1)
+    return;
+
   for (j = 1; j <= n; j++) {
     xi[j] *= xmin;
     p[j] += xi[j];
@@ -222,4 +237,5 @@ float brent (float pt[], float dir[], int n, float ax, float bx, float cx, float
     }
   }
   printf("too many iterations in brent\n");
+  return -1;
 }

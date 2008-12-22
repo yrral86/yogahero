@@ -7,8 +7,8 @@
 #include <stdio.h>
 
 static float vector[MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA];
-static float min[MODEL_CONSTRAINTS];
-static float max[MODEL_CONSTRAINTS];
+static float min[MODEL_CONSTRAINTS + MODEL_SEGMENT_LENGTHS];
+static float max[MODEL_CONSTRAINTS + MODEL_SEGMENT_LENGTHS];
 static int visible[MODEL_SEGMENTS];
 
 static model_type type;
@@ -266,6 +266,9 @@ void rotate_z(float angle) {
 void model_init() {
   int i;
 
+  // needed for segment length constraints
+  model_set_zero();
+
   // set angle constraints
   min[neck_c_0] = -100.0;
   max[neck_c_0] = 100.0;
@@ -300,6 +303,11 @@ void model_init() {
   min[knee_c_i] = -30.0;
   max[knee_c_i] = 30.0;
 
+  for (i = head_s_c; i <= foot_s_c; i++) {
+    min[i] = 0.5*vector[model_constraint_to_segment(i)];
+    max[i] = 2.0*vector[model_constraint_to_segment(i)];
+  }
+
   // set everything visible
   for (i = 0; i < MODEL_SEGMENTS; i++) {
     visible[i] = 1;
@@ -312,6 +320,33 @@ float model_get_min(model_angle_constraint c) {
 
 float model_get_max(model_angle_constraint c) {
   return max[c];
+}
+
+model_segment_length model_constraint_to_segment(model_angle_constraint c) {
+  // we typecast here to avoid a bunch of warnings about
+  // unhandled enum values
+  switch ((int)c) {
+  case head_s_c:
+    return head_s_l;
+  case shoulder_s_c:
+    return shoulder_s_l;
+  case u_arm_s_c:
+    return u_arm_s_l;
+  case l_arm_s_c:
+    return l_arm_s_l;
+  case hand_s_c:
+    return hand_s_l;
+  case side_s_c:
+    return side_s_l;
+  case pelvis_s_c:
+    return pelvis_s_l;
+  case u_leg_s_c:
+    return u_leg_s_l;
+  case l_leg_s_c:
+    return l_leg_s_l;
+  case foot_s_c:
+    return foot_s_l;
+  }
 }
 
 model_angle_constraint model_angle_to_constraint(model_angle a) {
