@@ -44,6 +44,13 @@ modelviewer: $(OBJECTS) modelviewer.c
 test: test.c
 	gcc -o test test.c $(TEST_FLAGS) $(C_FLAGS)
 
+test_all: test findmatch
+	for i in poses/*; \
+		do for j in images/*`basename $$i`.png;\
+			do ./test $$j $$i; \
+		done; \
+	done;
+
 .c.o:
 	gcc -c $< -o $@ $(CV_FLAGS) $(C_FLAGS)
 
