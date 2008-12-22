@@ -27,6 +27,7 @@ int main (int argc, char **argv) {
   GString *newFn;
   GString *command;
   char imagefn[100], posefn[100];
+  gchar *basename;
   if (argc != 3) {
     g_print("Usage: ./test filename posefile\n");
     exit(0);
@@ -35,9 +36,10 @@ int main (int argc, char **argv) {
   strcpy(imagefn, argv[1]);
   strcpy(posefn, argv[2]);
 
-  //  gtk_init(&argc, &argv);
-
-  newFn = g_string_new(g_path_get_basename(imagefn));;
+  // create output directory
+  basename = g_path_get_basename(imagefn);
+  newFn = g_string_new(basename);
+  g_free(basename);
   command = g_string_new("mkdir -p images/output/");
 
   // shave off .png
@@ -46,6 +48,20 @@ int main (int argc, char **argv) {
 
   // mkdir
   system(command->str);
+
+  g_string_free(command, TRUE);
+
+  // copy original file to output dir for comparison
+  command = g_string_new("cp ");
+  g_string_append(command, imagefn);
+  g_string_append(command, " images/output/");
+  g_string_append(command, newFn->str);
+
+  // copy
+  system(command->str);
+
+  g_string_free(command, TRUE);
+  g_string_free(newFn, TRUE);
 
   // test pure powell's
   run_match(imagefn, posefn, BASE);
@@ -136,8 +152,11 @@ void move_pose(char *imagefn, TEST_TYPE type) {
 void move_file(char *imagefn, char *origin, char *suffix, TEST_TYPE type) {
   GString *newFn;
   GString *command;
+  gchar *basename;
 
-  newFn = g_string_new(g_path_get_basename(imagefn));;
+  basename = g_path_get_basename(imagefn);
+  newFn = g_string_new(basename);
+  g_free(basename);
   command = g_string_new("mv ");
   g_string_append(command, origin);
   g_string_append(command, " images/output/");
@@ -181,4 +200,6 @@ void move_file(char *imagefn, char *origin, char *suffix, TEST_TYPE type) {
 
   system(command->str);
 
+  g_string_free(command, TRUE);
+  g_string_free(newFn, TRUE);
 }
