@@ -6,6 +6,8 @@ make builds three executables:
 
 findmatch:
 matches an image to a pose
+produces match.png (image of matching model), match.pose (saved model),
+and match.data (timing/error data)
 
 modelviewer:
 view the model with sliders to change angles/segment lengths/camera params
@@ -13,5 +15,5 @@ also, can load and save models to files
 
 test:
 runs findmatch with various parameters on the given image and pose
-saves image of model, model as file, and timing/error data to
-images/output/image-basename/
+saves match.png, match.pose, and match.data to
+images/output/image-basename/ for each test
