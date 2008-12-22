@@ -47,7 +47,7 @@ void model_draw_from_vector() {
   glScalef(scale, scale, scale);
 
   model_draw_legs();
-  
+
   // clear buffer
   glClear(GL_COLOR_BUFFER_BIT);
 
@@ -171,8 +171,8 @@ void model_draw_legs() {
   glPushMatrix();
 
   // draw left upper leg
+  rotate_z(-vector[l_hip_j_1]);
   rotate_y(-90 + vector[l_hip_j_0]);
-  rotate_x(-vector[l_hip_j_1]);
   my_gluCylinder(0.4, l_u_leg_s);
 
   // left hip internal rotation
@@ -281,8 +281,8 @@ void model_init() {
   max[wrist_c_0] = 50.0;
   min[wrist_c_1] = -100.0;
   max[wrist_c_1] = 100.0;
-  min[hip_c_0] = -15.0;
-  max[hip_c_0] = 90.0;
+  min[hip_c_0] = -60.0;
+  max[hip_c_0] = 150.0;
   min[hip_c_1] = -50.0;
   max[hip_c_1] = 100.0;
   min[knee_c_0] = -10.0;
