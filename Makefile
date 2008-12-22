@@ -25,6 +25,13 @@ CV_LIBS = `pkg-config --libs opencv`
 
 C_FLAGS = -g -Wall
 
+DEPS = \
+	freeglut3-dev \
+	libcv-dev \
+	libglade2-dev \
+	libgtk2.0-dev \
+	libgtkglext1-dev 
+
 all: findmatch modelviewer test
 
 findmatch: $(MATCH_OBJECTS) $(OBJECTS) main.c
@@ -41,3 +48,6 @@ test: test.c
 
 clean:
 	rm *~ findmatch modelviewer $(MATCH_OBJECTS) $(OBJECTS) pose.out pose.png
+
+ubuntudeps:
+	sudo apt-get install $(DEPS)
