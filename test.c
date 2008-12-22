@@ -10,6 +10,10 @@ typedef enum {
   FLOOR_10,
   ANGLE_100,
   FLOOR_100,
+  ANGLE_1000,
+  FLOOR_1000,
+  ANGLE_10000,
+  FLOOR_10000,
   ALL
 } TEST_TYPE;
 
@@ -84,9 +88,20 @@ int main (int argc, char **argv) {
   // test floor + powell's
   run_match(imagefn, posefn, FLOOR_100);
 
+  // test angle constraints + powell's
+  run_match(imagefn, posefn, ANGLE_1000);
+
+  // test floor + powell's
+  run_match(imagefn, posefn, FLOOR_1000);
+
+  // test angle constraints + powell's
+  run_match(imagefn, posefn, ANGLE_10000);
+
+  // test floor + powell's
+  run_match(imagefn, posefn, FLOOR_10000);
+
   // test all 3 + powell's
   run_match(imagefn, posefn, ALL);
-
 
   return 0;
 }
@@ -123,6 +138,22 @@ void run_match(char *imagefn, char *posefn, TEST_TYPE type) {
   case FLOOR_100:
     g_sprintf(command, "./findmatch %s %s -f 100", imagefn, posefn);
     g_print("floor 100\n");
+    break;
+  case ANGLE_1000:
+    g_sprintf(command, "./findmatch %s %s -a 1000", imagefn, posefn);
+    g_print("angle 1000\n");
+    break;
+  case FLOOR_1000:
+    g_sprintf(command, "./findmatch %s %s -f 1000", imagefn, posefn);
+    g_print("floor 1000\n");
+    break;
+  case ANGLE_10000:
+    g_sprintf(command, "./findmatch %s %s -a 10000", imagefn, posefn);
+    g_print("angle 10000\n");
+    break;
+  case FLOOR_10000:
+    g_sprintf(command, "./findmatch %s %s -f 10000", imagefn, posefn);
+    g_print("floor 10000\n");
     break;
   case ALL:
     g_sprintf(command, "./findmatch %s %s -a 1000 -f 1000", imagefn, posefn);
@@ -187,6 +218,18 @@ void move_file(char *imagefn, char *origin, char *suffix, TEST_TYPE type) {
     break;
   case FLOOR_100:
     g_string_append(newFn, "-FLOOR100");
+    break;
+  case ANGLE_1000:
+    g_string_append(newFn, "-ANGLE1000");
+    break;
+  case FLOOR_1000:
+    g_string_append(newFn, "-FLOOR1000");
+    break;
+  case ANGLE_10000:
+    g_string_append(newFn, "-ANGLE10000");
+    break;
+  case FLOOR_10000:
+    g_string_append(newFn, "-FLOOR10000");
     break;
   case ALL:
     g_string_append(newFn, "-ALL");
