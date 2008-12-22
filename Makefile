@@ -23,7 +23,8 @@ CV_FLAGS = `pkg-config --cflags opencv`
 
 CV_LIBS = `pkg-config --libs opencv`
 
-C_FLAGS = -g -Wall
+C_FLAGS = -O3
+#C_FLAGS = -g -Wall
 
 DEPS = \
 	freeglut3-dev \
