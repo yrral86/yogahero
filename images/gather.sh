@@ -36,3 +36,7 @@ for i in 10 15 20 25; do
 	./gather_one.sh ALL$i$j;
     done;
 done
+
+./gatherone.sh ALL205
+./gatherone.sh ALL205S
+./gatherone.sh ALL1025S
