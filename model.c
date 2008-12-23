@@ -33,7 +33,7 @@ void model_draw_from_vector() {
 
   // setup openGL projection matrix
   camera_set_from_vector(vector + MODEL_ANGLES + MODEL_SEGMENT_LENGTHS);
-  
+
   // black background
   glClearColor(0.0, 0.0, 0.0, 0.0);
   // white foreground
@@ -57,7 +57,7 @@ void model_draw_from_vector() {
   glScalef(scale, scale, scale);
 
   rotate_z(correction_angle);
-  
+
   model_draw_legs();
 
   // draw left side
@@ -66,7 +66,7 @@ void model_draw_from_vector() {
 
   // push left shoulder
   glPushMatrix();
-  
+
   // draw left upper arm
   rotate_y(sideangle - 90 + vector[l_shoulder_j_0]);
   rotate_x(vector[l_shoulder_j_1]);
@@ -104,7 +104,7 @@ void model_draw_from_vector() {
 
   // pop back to base of neck
   glPopMatrix();
-  
+
   // draw right shoulder
   my_gluCylinder(0.15, r_shoulder_s);
 
@@ -250,7 +250,7 @@ void my_gluCylinder(float radius, model_segment s) {
       gluDeleteQuadric(quad);
     }
   }
-  
+
   glTranslatef(0.0, 0.0, length);
 
   // we are at a new point, so make sure it is above the floor
@@ -472,7 +472,7 @@ float* model_get_vector() {
 
 void model_set_zero() {
   int i;
-  
+
   // angle parameters
   for (i = 0; i < MODEL_ANGLES; i++) {
     vector[i] = 0;
@@ -585,7 +585,7 @@ void model_start_color_from_segment (float *color, model_segment s) {
 
   switch (s) {
   case(head_s):
-  case(r_shoulder_s): 
+  case(r_shoulder_s):
     ang[0] = neck_j_0;
     ang[1] = neck_j_1;
     n = 2;
@@ -636,7 +636,7 @@ void model_start_color_from_segment (float *color, model_segment s) {
     n = 3;
     break;
   case(l_u_leg_s):
-  case(l_side_s): 
+  case(l_side_s):
     ang[0] = l_hip_j_0;
     ang[1] = l_hip_j_1;
     ang[2] = l_hip_j_i;
@@ -679,7 +679,7 @@ void model_end_color_from_segment (float *color, model_segment s) {
   case(l_foot_s):
     n = 0;
     break;
-  case(r_shoulder_s): 
+  case(r_shoulder_s):
     ang[0] = r_shoulder_j_0;
     ang[1] = r_shoulder_j_1;
     ang[2] = r_shoulder_j_i;
@@ -700,7 +700,7 @@ void model_end_color_from_segment (float *color, model_segment s) {
     ang[1] = l_elbow_j_i;
     n = 2;
     break;
-  case(l_side_s): 
+  case(l_side_s):
     ang[0] = l_shoulder_j_0;
     ang[1] = l_shoulder_j_1;
     ang[2] = l_shoulder_j_i;

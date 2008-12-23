@@ -231,7 +231,7 @@ int main (int argc, char **argv) {
   GdkGLContext *glcontext;
   GdkPixmap *pixmap;
   GdkGLDrawable *gldrawable;
-  
+
   if (argc < 3) {
     g_printf("Usage: ./match imagefile posefile [-c] [-f n] [-a n]\n");
     g_printf("-n: no match- just run alignTorso and stop\n");
@@ -240,7 +240,7 @@ int main (int argc, char **argv) {
     g_printf("-a n: enable angle constraints with a weight of n\n");
     exit(0);
   }
-  
+
   for (i = 3; i < argc; i++) {
     if (strcmp(argv[i], "-s") == 0)
       torsoscale = 1;
@@ -311,22 +311,22 @@ int main (int argc, char **argv) {
   if (!alignonly) {
     for (i = 0; i < n; i++)
       enabled[i] = 1;
-    
+
     enabled[shoulder_s_l] = 0;
-    
+
     // match image to pose
     g_timer_start(timer);
     match(image, enabled);
     g_timer_stop(timer);
-    
+
     matchtime = g_timer_elapsed(timer, NULL);
-    
+
   } else
     matchtime = 0.0;
 
     project(buffer, model_get_vector() - 1);
     matchsd = symmetric_difference(buffer, image);
-    
+
     printf("error after match: %g\n", matchsd);
     printf("time for match: %gs\n", matchtime);
     printf("total time: %gs\n", matchtime + aligntime);
@@ -355,7 +355,6 @@ int main (int argc, char **argv) {
   // cleanup gl
   g_object_unref(glconfig);
   g_object_unref(glcontext);
- 
+
   return 0;
 }
-

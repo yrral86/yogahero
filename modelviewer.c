@@ -117,9 +117,9 @@ void on_loadButton_clicked(GtkWidget *widget, GdkEventButton *event) {
   for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA; i++) {
     vector[i] = mvector[i];
   }
-  
+
   viewer_set_from_vector();
-  
+
   viewer_draw();
 }
 
@@ -173,7 +173,7 @@ int main (int argc, char **argv) {
   gtk_gl_init(&argc, &argv);
 
   config = gdk_gl_config_new_by_mode(GDK_GL_MODE_SINGLE | GDK_GL_MODE_RGB);
-  
+
   xml = glade_xml_new("modelviewer.ui", NULL, NULL);
 
   glade_xml_signal_autoconnect(xml);

@@ -75,7 +75,7 @@ int main (int argc, char **argv) {
     g_print("Usage: ./test filename posefile\n");
     exit(0);
   }
-  
+
   strcpy(imagefn, argv[1]);
   strcpy(posefn, argv[2]);
 

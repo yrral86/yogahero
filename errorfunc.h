@@ -22,7 +22,7 @@ float error_function(float p[], IplImage *image);
 float angle_error(float *p);
 
 /**
-   Calculates the area of the symmetric differenct between two 
+   Calculates the area of the symmetric differenct between two
    binary images
 
    @param img1 the first image

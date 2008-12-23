@@ -15,5 +15,5 @@ void camera_set_from_vector(float *params) {
 	    params[c_look_x], params[c_pos_y], params[c_look_z],
 	    0.0, 1.0, 0.0);
 
-  glMatrixMode(GL_MODELVIEW);		 
+  glMatrixMode(GL_MODELVIEW);
 }

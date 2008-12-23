@@ -11,7 +11,7 @@ float error_function(float p[], IplImage *image) {
   IplImage *buffer = cvCreateImage(cvGetSize(image), 8, 1);
   float sd, fe, ae;
   //  char fn[100];
-  
+
   project(buffer, p);
 
   sd = symmetric_difference(image, buffer);
@@ -72,9 +72,9 @@ float symmetric_difference(IplImage *img1, IplImage *img2) {
 
 void project(IplImage *img, float *p) {
   model_set_vector(p + 1);
-  
+
   model_draw_from_vector();
-  
+
   glReadPixels(0, 0, img->width, img->height, GL_LUMINANCE,
 	       GL_UNSIGNED_BYTE, img->imageData);
 }

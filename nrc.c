@@ -5,14 +5,14 @@
 void powell(float p[], float **xi, int n, float ftol, int *iter, float *fret, float (*func)(float [], IplImage*), IplImage *image) {
   int i, ibig, j;
   float del, fp, fptt, t, *pt, *ptt, *xit;
-  
+
   pt = malloc(sizeof(float)*n); // minus 1 so index is 1..n instead of 0.. n-1
   pt--;
   ptt = malloc(sizeof(float)*n);
   ptt--;
   xit = malloc(sizeof(float)*n);
   xit--;
-  
+
   /// evaluate the parameters
   *fret=(*func)(p, image);
   /// save the initial point
@@ -61,7 +61,7 @@ void powell(float p[], float **xi, int n, float ftol, int *iter, float *fret, fl
     }
     /// evaluate the image at the extrapolated point
     fptt = (*func)(ptt, image);
-    
+
     /// if the value at the extrapolated point is less than the original value
     if (fptt < fp) {
       t = 2.0*(fp - 2.0*(*fret) + fptt)*pow(fp - (*fret) - del, 2.0) - del*pow(fp-fptt, 2.0);
@@ -87,10 +87,10 @@ void powell(float p[], float **xi, int n, float ftol, int *iter, float *fret, fl
 void linmin(float p[], float xi[], int n, float *fret, float (*func)(float [], IplImage*), IplImage *image) {
   int i, j;
   float xx, xmin, fx, fb, fa, bx, ax;
-  
+
   float dot = 0.0;
   for (i = 1; i <=n; i++) dot += p[i]*xi[i];
-  
+
   ax = -0.1*dot;
   xx = 0.1*dot;
   mnbrak(p, xi, n, &ax, &xx, &bx, &fa, &fx, &fb, func, image);
@@ -114,7 +114,7 @@ void mnbrak(float p[], float d[], int n, float *ax, float *bx, float *cx, float 
 
   for (i = 1; i <= n; i++) p2[i] = p[i] + *ax*d[i];
   *fa = (*func)(p2, image);
-  
+
   for (i = 1; i <= n; i++) p2[i] = p[i] + *bx*d[i];
   *fb = (*func)(p2, image);
 
