@@ -4,6 +4,11 @@ echo "Gathering $1"
 
 files=`find . | egrep '*.data'| grep $1`
 
+echo -e \
+    "file\tinitial error\talign error\tmatch error\talign \
+time\tmatch time\ttotal time" \
+    > $1.data
+
 for i in $files; do
     # Gather data
     echo -e -n "$i" | perl -p -i -e 's#\./output/(.*)/.*#\1\t#' \
