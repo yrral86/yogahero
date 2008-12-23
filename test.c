@@ -105,7 +105,7 @@ int main (int argc, char **argv) {
   */
 
   // second round of tests
-  for (i = ANGLE_5000; i <= FLOOR_4000; i++)
+  for (i = ANGLE_5000; i <= ALL_25_30; i++)
     run_match(imagefn, posefn, i);
 
 
