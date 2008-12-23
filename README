@@ -17,3 +17,7 @@ test:
 runs findmatch with various parameters on the given image and pose
 saves match.png, match.pose, and match.data to
 images/output/image-basename/ for each test
+
+make also has a test_all target, which when invoked matches all the images
+to all the poses, making some assumptions about filenames (the image will
+be in images/*posename.png and the poses are in poses/posename)
