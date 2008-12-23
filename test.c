@@ -16,7 +16,35 @@ typedef enum {
   FLOOR_1000,
   ANGLE_10000,
   FLOOR_10000,
-  ALL
+  ALL,
+  ANGLE_5000,
+  ANGLE_15000,
+  ANGLE_20000,
+  ANGLE_25000,
+  ANGLE_50000,
+  FLOOR_500,
+  FLOOR_1500,
+  FLOOR_2000,
+  FLOOR_2500,
+  FLOOR_3000,
+  FLOOR_3500,
+  FLOOR_4000,
+  ALL_10_15,
+  ALL_10_20,
+  ALL_10_25,
+  ALL_10_30,
+  ALL_15_15,
+  ALL_15_20,
+  ALL_15_25,
+  ALL_15_30,
+  ALL_20_15,
+  ALL_20_20,
+  ALL_20_25,
+  ALL_20_30,
+  ALL_25_15,
+  ALL_25_20,
+  ALL_25_25,
+  ALL_25_30
 } TEST_TYPE;
 
 void run_match(char*, char*, TEST_TYPE);
@@ -71,8 +99,15 @@ int main (int argc, char **argv) {
   g_string_free(command, TRUE);
   g_string_free(newFn, TRUE);
 
+  /* // first round of tests
   for (i = 0; i <= ALL; i++)
     run_match(imagefn, posefn, i);
+  */
+
+  // second round of tests
+  for (i = ANGLE_5000; i <= FLOOR_4000; i++)
+    run_match(imagefn, posefn, i);
+
 
   return 0;
 }
@@ -137,6 +172,118 @@ void run_match(char *imagefn, char *posefn, TEST_TYPE type) {
   case ALL:
     g_sprintf(command, "./findmatch %s %s -a 1000 -f 1000", imagefn, posefn);
     g_print("all\n");
+    break;
+  case ANGLE_5000:
+    g_sprintf(command, "./findmatch %s %s -a 5000", imagefn, posefn);
+    g_print("angle 5000\n");
+    break;
+   case ANGLE_15000:
+    g_sprintf(command, "./findmatch %s %s -a 15000", imagefn, posefn);
+    g_print("angle 15000\n");
+    break;
+  case ANGLE_20000:
+    g_sprintf(command, "./findmatch %s %s -a 20000", imagefn, posefn);
+    g_print("angle 20000\n");
+    break;
+  case ANGLE_25000:
+    g_sprintf(command, "./findmatch %s %s -a 25000", imagefn, posefn);
+    g_print("angle 25000\n");
+    break;
+  case ANGLE_50000:
+    g_sprintf(command, "./findmatch %s %s -a 50000", imagefn, posefn);
+    g_print("angle 50000\n");
+    break;
+  case FLOOR_500:
+    g_sprintf(command, "./findmatch %s %s -f 500", imagefn, posefn);
+    g_print("floor 500\n");
+    break;
+   case FLOOR_1500:
+    g_sprintf(command, "./findmatch %s %s -f 1500", imagefn, posefn);
+    g_print("floor 1500\n");
+    break;
+  case FLOOR_2000:
+    g_sprintf(command, "./findmatch %s %s -f 2000", imagefn, posefn);
+    g_print("floor 2000\n");
+    break;
+  case FLOOR_2500:
+    g_sprintf(command, "./findmatch %s %s -f 2500", imagefn, posefn);
+    g_print("floor 2500\n");
+    break;
+  case FLOOR_3000:
+    g_sprintf(command, "./findmatch %s %s -f 3000", imagefn, posefn);
+    g_print("floor 3000\n");
+    break;
+  case FLOOR_3500:
+    g_sprintf(command, "./findmatch %s %s -f 3500", imagefn, posefn);
+    g_print("floor 3500\n");
+    break;
+  case FLOOR_4000:
+    g_sprintf(command, "./findmatch %s %s -f 4000", imagefn, posefn);
+    g_print("floor 4000\n");
+    break;
+  case ALL_10_15:
+    g_sprintf(command, "./findmatch %s %s -a 10000 -f 1500", imagefn, posefn);
+    g_print("all 10000x1500\n");
+    break;
+  case ALL_10_20:
+    g_sprintf(command, "./findmatch %s %s -a 10000 -f 2000", imagefn, posefn);
+    g_print("all 10000x2000\n");
+    break;
+  case ALL_10_25:
+    g_sprintf(command, "./findmatch %s %s -a 10000 -f 2500", imagefn, posefn);
+    g_print("all 10000x2500\n");
+    break;
+  case ALL_10_30:
+    g_sprintf(command, "./findmatch %s %s -a 10000 -f 3000", imagefn, posefn);
+    g_print("all 10000x3000\n");
+    break;
+  case ALL_15_15:
+    g_sprintf(command, "./findmatch %s %s -a 15000 -f 1500", imagefn, posefn);
+    g_print("all 15000x1500\n");
+    break;
+  case ALL_15_20:
+    g_sprintf(command, "./findmatch %s %s -a 15000 -f 2000", imagefn, posefn);
+    g_print("all 15000x2000\n");
+    break;
+  case ALL_15_25:
+    g_sprintf(command, "./findmatch %s %s -a 15000 -f 2500", imagefn, posefn);
+    g_print("all 15000x2500\n");
+    break;
+  case ALL_15_30:
+    g_sprintf(command, "./findmatch %s %s -a 15000 -f 3000", imagefn, posefn);
+    g_print("all 15000x3000\n");
+    break;
+  case ALL_20_15:
+    g_sprintf(command, "./findmatch %s %s -a 20000 -f 1500", imagefn, posefn);
+    g_print("all 20000x1500\n");
+    break;
+  case ALL_20_20:
+    g_sprintf(command, "./findmatch %s %s -a 20000 -f 2000", imagefn, posefn);
+    g_print("all 20000x2000\n");
+    break;
+  case ALL_20_25:
+    g_sprintf(command, "./findmatch %s %s -a 20000 -f 2500", imagefn, posefn);
+    g_print("all 20000x2500\n");
+    break;
+  case ALL_20_30:
+    g_sprintf(command, "./findmatch %s %s -a 20000 -f 3000", imagefn, posefn);
+    g_print("all 20000x3000\n");
+    break;
+  case ALL_25_15:
+    g_sprintf(command, "./findmatch %s %s -a 25000 -f 1500", imagefn, posefn);
+    g_print("all 25000x1500\n");
+    break;
+  case ALL_25_20:
+    g_sprintf(command, "./findmatch %s %s -a 25000 -f 2000", imagefn, posefn);
+    g_print("all 25000x2000\n");
+    break;
+  case ALL_25_25:
+    g_sprintf(command, "./findmatch %s %s -a 25000 -f 2500", imagefn, posefn);
+    g_print("all 25000x2500\n");
+    break;
+  case ALL_25_30:
+    g_sprintf(command, "./findmatch %s %s -a 25000 -f 3000", imagefn, posefn);
+    g_print("all 25000x3000\n");
     break;
   }
 
@@ -219,6 +366,91 @@ void move_file(char *imagefn, char *origin, char *suffix, TEST_TYPE type) {
   case ALL:
     g_string_append(newFn, "-ALL");
     break;
+  case ANGLE_5000:
+    g_string_append(newFn, "-ANGLE5000");
+    break;
+  case ANGLE_15000:
+    g_string_append(newFn, "-ANGLE15000");
+    break;
+  case ANGLE_20000:
+    g_string_append(newFn, "-ANGLE20000");
+    break;
+  case ANGLE_25000:
+    g_string_append(newFn, "-ANGLE25000");
+    break;
+  case ANGLE_50000:
+    g_string_append(newFn, "-ANGLE60000");
+    break;
+  case FLOOR_500:
+    g_string_append(newFn, "-FLOOR500");
+    break;
+  case FLOOR_1500:
+    g_string_append(newFn, "-FLOOR1500");
+    break;
+  case FLOOR_2000:
+    g_string_append(newFn, "-FLOOR2000");
+    break;
+  case FLOOR_2500:
+    g_string_append(newFn, "-FLOOR2500");
+    break;
+  case FLOOR_3000:
+    g_string_append(newFn, "-FLOOR3000");
+    break;
+  case FLOOR_3500:
+    g_string_append(newFn, "-FLOOR3500");
+    break;
+  case FLOOR_4000:
+    g_string_append(newFn, "-FLOOR4000");
+    break;
+  case ALL_10_15:
+    g_string_append(newFn, "-ALL1015");
+    break;
+  case ALL_10_20:
+    g_string_append(newFn, "-ALL1020");
+    break;
+  case ALL_10_25:
+    g_string_append(newFn, "-ALL1025");
+    break;
+  case ALL_10_30:
+    g_string_append(newFn, "-ALL1030");
+    break;
+  case ALL_15_15:
+    g_string_append(newFn, "-ALL1515");
+    break;
+  case ALL_15_20:
+    g_string_append(newFn, "-ALL1520");
+    break;
+  case ALL_15_25:
+    g_string_append(newFn, "-ALL1525");
+    break;
+  case ALL_15_30:
+    g_string_append(newFn, "-ALL1530");
+    break;
+  case ALL_20_15:
+    g_string_append(newFn, "-ALL2015");
+    break;
+  case ALL_20_20:
+    g_string_append(newFn, "-ALL2020");
+    break;
+  case ALL_20_25:
+    g_string_append(newFn, "-ALL2025");
+    break;
+  case ALL_20_30:
+    g_string_append(newFn, "-ALL2030");
+    break;
+  case ALL_25_15:
+    g_string_append(newFn, "-ALL2515");
+    break;
+  case ALL_25_20:
+    g_string_append(newFn, "-ALL2520");
+    break;
+  case ALL_25_25:
+    g_string_append(newFn, "-ALL2525");
+    break;
+  case ALL_25_30:
+    g_string_append(newFn, "-ALL2530");
+    break;
+
   }
 
   g_string_append(newFn, suffix);
