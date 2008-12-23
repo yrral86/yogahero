@@ -32,7 +32,7 @@ for i in 500 1500 2000 2500 3000 3500 4000; do
 done
 
 for i in 10 15 20 25; do
-    for j in 15 20 25 30; do
+    for j in 15 20 25 30 35; do
 	./gather_one.sh ALL$i$j;
     done;
 done

@@ -44,7 +44,11 @@ typedef enum {
   ALL_25_15,
   ALL_25_20,
   ALL_25_25,
-  ALL_25_30
+  ALL_25_30,
+  ALL_10_35,
+  ALL_15_35,
+  ALL_20_35,
+  ALL_25_35
 } TEST_TYPE;
 
 void run_match(char*, char*, TEST_TYPE);
@@ -104,10 +108,14 @@ int main (int argc, char **argv) {
     run_match(imagefn, posefn, i);
   */
 
-  // second round of tests
+  /*  // second round of tests
   for (i = ANGLE_5000; i <= ALL_25_30; i++)
     run_match(imagefn, posefn, i);
+  */
 
+  // third round
+  for (i = ALL_10_35; i <= ALL_25_35; i++)
+    run_match(imagefn, posefn, i);
 
   return 0;
 }
@@ -285,6 +293,22 @@ void run_match(char *imagefn, char *posefn, TEST_TYPE type) {
     g_sprintf(command, "./findmatch %s %s -a 25000 -f 3000", imagefn, posefn);
     g_print("all 25000x3000\n");
     break;
+  case ALL_10_35:
+    g_sprintf(command, "./findmatch %s %s -a 10000 -f 3500", imagefn, posefn);
+    g_print("all 10000x3500\n");
+    break;
+  case ALL_15_35:
+    g_sprintf(command, "./findmatch %s %s -a 15000 -f 3500", imagefn, posefn);
+    g_print("all 15000x3500\n");
+    break;
+  case ALL_20_35:
+    g_sprintf(command, "./findmatch %s %s -a 20000 -f 3500", imagefn, posefn);
+    g_print("all 20000x3500\n");
+    break;
+  case ALL_25_35:
+    g_sprintf(command, "./findmatch %s %s -a 25000 -f 3500", imagefn, posefn);
+    g_print("all 25000x3500\n");
+    break;
   }
 
   system(command);
@@ -449,6 +473,18 @@ void move_file(char *imagefn, char *origin, char *suffix, TEST_TYPE type) {
     break;
   case ALL_25_30:
     g_string_append(newFn, "-ALL2530");
+    break;
+  case ALL_10_35:
+    g_string_append(newFn, "-ALL1035");
+    break;
+  case ALL_15_35:
+    g_string_append(newFn, "-ALL1535");
+    break;
+  case ALL_20_35:
+    g_string_append(newFn, "-ALL2035");
+    break;
+  case ALL_25_35:
+    g_string_append(newFn, "-ALL2535");
     break;
 
   }
