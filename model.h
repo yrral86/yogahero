@@ -143,8 +143,15 @@ void model_set_type(model_type);
 // file functions
 void model_to_file(char*);
 void model_from_file(char*);
+void pose_from_file(char*);
 
 // floor error getter
 float model_get_floor_error();
+
+// color getters
+void model_start_color_from_segment(float*, model_segment);
+void model_end_color_from_segment(float*, model_segment);
+void model_start_color_from_segment(float*, model_segment);
+void model_color_from_angles(float*, model_angle*, int);
 
 #endif

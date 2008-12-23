@@ -7,6 +7,7 @@
 #include <stdio.h>
 
 static float vector[MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA];
+static float pose[MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA];
 static float min[MODEL_CONSTRAINTS + MODEL_SEGMENT_LENGTHS];
 static float max[MODEL_CONSTRAINTS + MODEL_SEGMENT_LENGTHS];
 static int visible[MODEL_SEGMENTS];
@@ -210,11 +211,25 @@ void my_gluCylinder(float radius, model_segment s) {
   float yval;
   GLUquadricObj *quad;
   float length = vector[model_segment_to_length(s)];
+  float color[3];
   if (visible[s]) {
     if (type == stick) {
       glBegin(GL_LINES);
+
+      if (pose[head_s_l] != -1) {
+	model_start_color_from_segment(color, s);
+	glColor3fv(color);
+      }
+
       glVertex3f(0,0,0);
+
+      if (pose[head_s_l] != -1) {
+	model_end_color_from_segment(color, s);
+	glColor3fv(color);
+      }
+
       glVertex3f(0,0,length);
+
       glEnd();
     } else {
       quad = gluNewQuadric();
@@ -312,6 +327,8 @@ void model_init() {
   for (i = 0; i < MODEL_SEGMENTS; i++) {
     visible[i] = 1;
   }
+
+  pose[head_s_l] = -1;
 }
 
 float model_get_min(model_angle_constraint c) {
@@ -547,6 +564,217 @@ void model_from_file(char *fn) {
   fclose(in);
 }
 
+void pose_from_file(char *fn) {
+  int i;
+  FILE *in = fopen(fn, "r");
+
+  for (i = 0; i < MODEL_ANGLES + MODEL_SEGMENT_LENGTHS + MODEL_CAMERA; i++) {
+    fscanf(in, "%g\n", pose + i);
+  }
+
+  fclose(in);
+}
+
 float model_get_floor_error() {
   return floor_error;
+}
+
+void model_start_color_from_segment (float *color, model_segment s) {
+  model_angle ang[3];
+  int n;
+
+  switch (s) {
+  case(head_s):
+  case(r_shoulder_s): 
+    ang[0] = neck_j_0;
+    ang[1] = neck_j_1;
+    n = 2;
+    break;
+  case(r_u_arm_s):
+  case(r_side_s):
+    ang[0] = r_shoulder_j_0;
+    ang[1] = r_shoulder_j_1;
+    ang[2] = r_shoulder_j_i;
+    n = 3;
+    break;
+  case(l_shoulder_s):
+  case(l_u_arm_s):
+    ang[0] = l_shoulder_j_0;
+    ang[1] = l_shoulder_j_1;
+    ang[2] = l_shoulder_j_i;
+    n = 3;
+    break;
+  case(r_l_arm_s):
+    ang[0] = r_elbow_j_0;
+    ang[1] = r_elbow_j_i;
+    n = 2;
+    break;
+  case(l_l_arm_s):
+    ang[0] = l_elbow_j_0;
+    ang[1] = l_elbow_j_i;
+    n = 2;
+    break;
+  case(r_hand_s):
+    ang[0] = r_wrist_j_0;
+    ang[1] = r_wrist_j_1;
+    n = 2;
+    break;
+  case(l_hand_s):
+    ang[0] = l_wrist_j_0;
+    ang[1] = l_wrist_j_1;
+    n = 2;
+    break;
+  case(r_u_leg_s):
+    ang[0] = r_knee_j_0;
+    ang[1] = r_knee_j_i;
+    n = 2;
+    break;
+  case(pelvis_s):
+    ang[0] = r_hip_j_0;
+    ang[1] = r_hip_j_1;
+    ang[2] = r_hip_j_i;
+    n = 3;
+    break;
+  case(l_u_leg_s):
+  case(l_side_s): 
+    ang[0] = l_hip_j_0;
+    ang[1] = l_hip_j_1;
+    ang[2] = l_hip_j_i;
+    n = 3;
+    break;
+  case(r_l_leg_s):
+    ang[0] = r_ankle_j_0;
+    ang[1] = r_ankle_j_1;
+    n = 2;
+    break;
+  case(l_l_leg_s):
+    ang[0] = l_knee_j_0;
+    ang[1] = l_knee_j_i;
+    n = 2;
+    break;
+  case(r_foot_s):
+    n = 0;
+    break;
+  case(l_foot_s):
+    ang[0] = l_ankle_j_0;
+    ang[1] = l_ankle_j_1;
+    n = 2;
+    break;
+  default:
+    printf("we shouldn't be here (model_start_color_from_segment in model.c)\n");
+    n = 0;
+    break;
+  }
+  model_color_from_angles(color, ang, n);
+}
+
+void model_end_color_from_segment (float *color, model_segment s) {
+  model_angle ang[3];
+  int n;
+
+  switch (s) {
+  case(head_s):
+  case(r_hand_s):
+  case(l_hand_s):
+  case(l_foot_s):
+    n = 0;
+    break;
+  case(r_shoulder_s): 
+    ang[0] = r_shoulder_j_0;
+    ang[1] = r_shoulder_j_1;
+    ang[2] = r_shoulder_j_i;
+    n = 3;
+    break;
+  case(r_u_arm_s):
+    ang[0] = r_elbow_j_0;
+    ang[1] = r_elbow_j_i;
+    n = 2;
+    break;
+  case(l_shoulder_s):
+    ang[0] = neck_j_0;
+    ang[1] = neck_j_1;
+    n = 2;
+    break;
+  case(l_u_arm_s):
+    ang[0] = l_elbow_j_0;
+    ang[1] = l_elbow_j_i;
+    n = 2;
+    break;
+  case(l_side_s): 
+    ang[0] = l_shoulder_j_0;
+    ang[1] = l_shoulder_j_1;
+    ang[2] = l_shoulder_j_i;
+    n = 3;
+    break;
+  case(r_l_arm_s):
+    ang[0] = r_wrist_j_0;
+    ang[1] = r_wrist_j_1;
+    n = 2;
+    break;
+  case(l_l_arm_s):
+    ang[0] = l_wrist_j_0;
+    ang[1] = l_wrist_j_1;
+    n = 2;
+    break;
+  case(pelvis_s):
+    ang[0] = l_hip_j_0;
+    ang[1] = l_hip_j_1;
+    ang[2] = l_hip_j_i;
+    n = 3;
+    break;
+  case(r_l_leg_s):
+    ang[0] = r_knee_j_0;
+    ang[1] = r_knee_j_i;
+    n = 2;
+    break;
+  case(r_u_leg_s):
+  case(r_side_s):
+    ang[0] = r_hip_j_0;
+    ang[1] = r_hip_j_1;
+    ang[2] = r_hip_j_i;
+    n = 3;
+    break;
+  case(l_u_leg_s):
+    ang[0] = l_knee_j_0;
+    ang[1] = l_knee_j_i;
+    n = 2;
+    break;
+  case(r_foot_s):
+    ang[0] = r_ankle_j_0;
+    ang[1] = r_ankle_j_1;
+    n = 2;
+    break;
+  case(l_l_leg_s):
+    ang[0] = l_ankle_j_0;
+    ang[1] = l_ankle_j_1;
+    n = 2;
+    break;
+  default:
+    printf("we shouldn't be here (model_end_color_from_segment in model.c)\n");
+    n = 0;
+    break;
+  }
+
+  model_color_from_angles(color, ang, n);
+}
+
+void model_color_from_angles(float *color, model_angle *ang, int n) {
+  float error = 0.0;
+  int i;
+
+  for (i = 0; i < n; i++) {
+    error += fabs(pose[ang[i]] - vector[ang[i]]);
+  }
+
+  if (n > 0)
+    error /= n;
+
+  if (error > 30)
+    error = 30;
+
+  error /= 30;
+
+  color[0] = error*1.0;
+  color[1] = (1.0-error)*1.0;
+  color[2] = 0;
 }

@@ -49,9 +49,9 @@ float angle_error(float *p) {
     else
       j = i - MODEL_ANGLES + MODEL_CONSTRAINTS;
     if (p[i] < model_get_min(j))
-      error += pow(1.0 + abs(model_get_min(j) - p[i]), 8.0);
+      error += pow(1.0 + fabs(model_get_min(j) - p[i]), 8.0);
     else if (p[i] > model_get_max(j))
-      error += pow(1.0 + abs(p[i] - model_get_max(j)), 8.0);
+      error += pow(1.0 + fabs(p[i] - model_get_max(j)), 8.0);
 
   return error;
 }
