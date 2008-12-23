@@ -379,7 +379,7 @@ void move_file(char *imagefn, char *origin, char *suffix, TEST_TYPE type) {
     g_string_append(newFn, "-ANGLE25000");
     break;
   case ANGLE_50000:
-    g_string_append(newFn, "-ANGLE60000");
+    g_string_append(newFn, "-ANGLE50000");
     break;
   case FLOOR_500:
     g_string_append(newFn, "-FLOOR500");
