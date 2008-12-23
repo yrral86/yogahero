@@ -3,6 +3,8 @@
 #include <gio/gio.h>
 
 typedef enum {
+  ALIGN_ONLY,
+  ALIGN_ONLY_SCALE,
   BASE,
   ANGLE_1,
   FLOOR_1,
@@ -32,6 +34,8 @@ int main (int argc, char **argv) {
   GString *command;
   char imagefn[100], posefn[100];
   gchar *basename;
+  int i;
+
   if (argc != 3) {
     g_print("Usage: ./test filename posefile\n");
     exit(0);
@@ -67,41 +71,8 @@ int main (int argc, char **argv) {
   g_string_free(command, TRUE);
   g_string_free(newFn, TRUE);
 
-  // test pure powell's
-  run_match(imagefn, posefn, BASE);
-
-  // test angle constraints + powell's
-  run_match(imagefn, posefn, ANGLE_1);
-  
-  // test floor + powell's
-  run_match(imagefn, posefn, FLOOR_1);
-
-  // test angle constraints + powell's
-  run_match(imagefn, posefn, ANGLE_10);
-
-  // test floor + powell's
-  run_match(imagefn, posefn, FLOOR_10);
-
-  // test angle constraints + powell's
-  run_match(imagefn, posefn, ANGLE_100);
-
-  // test floor + powell's
-  run_match(imagefn, posefn, FLOOR_100);
-
-  // test angle constraints + powell's
-  run_match(imagefn, posefn, ANGLE_1000);
-
-  // test floor + powell's
-  run_match(imagefn, posefn, FLOOR_1000);
-
-  // test angle constraints + powell's
-  run_match(imagefn, posefn, ANGLE_10000);
-
-  // test floor + powell's
-  run_match(imagefn, posefn, FLOOR_10000);
-
-  // test all 3 + powell's
-  run_match(imagefn, posefn, ALL);
+  for (i = 0; i <= ALL; i++)
+    run_match(imagefn, posefn, i);
 
   return 0;
 }
@@ -111,6 +82,14 @@ void run_match(char *imagefn, char *posefn, TEST_TYPE type) {
   gchar command[100];
 
   switch (type) {
+  case ALIGN_ONLY:
+    g_sprintf(command, "./findmatch %s %s -n", imagefn, posefn);
+    g_print("align only\n");
+    break;
+  case ALIGN_ONLY_SCALE:
+    g_sprintf(command, "./findmatch %s %s -n -s", imagefn, posefn);
+    g_print("align only w/scale\n");
+    break;
   case BASE:
     g_sprintf(command, "./findmatch %s %s", imagefn, posefn);
     g_print("base\n");
@@ -198,6 +177,12 @@ void move_file(char *imagefn, char *origin, char *suffix, TEST_TYPE type) {
   g_string_append(command, newFn->str);
 
   switch (type) {
+  case ALIGN_ONLY:
+    g_string_append(newFn, "-ALIGN");
+    break;
+  case ALIGN_ONLY_SCALE:
+    g_string_append(newFn, "-ALIGNSCALE");
+    break;
   case BASE:
     g_string_append(newFn, "-BASE");
     break;
