@@ -2,7 +2,7 @@
 
 echo "Gathering $1"
 
-files=`find . | egrep '*.data'| grep $1`
+files=`find . | grep $1.data`
 
 echo -e \
     "file\tinitial error\talign error\tmatch error\talign \
