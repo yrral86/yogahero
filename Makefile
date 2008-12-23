@@ -13,7 +13,7 @@ OBJECTS = $(SOURCES:.c=.o)
 TEST_SOURCES = \
 	test.c
 
-TEST_FLAGS = `pkg-config --cflags --libs gio-2.0 gtk+ glib-2.0`
+TEST_FLAGS = `pkg-config --cflags --libs gio-2.0 gtk+-2.0 glib-2.0`
 
 GLADE_FLAGS = `pkg-config --cflags --libs libglade-2.0` -export-dynamic
 
