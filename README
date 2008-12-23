@@ -21,3 +21,8 @@ images/output/image-basename/ for each test
 make also has a test_all target, which when invoked matches all the images
 to all the poses, making some assumptions about filenames (the image will
 be in images/*posename.png and the poses are in poses/posename)
+
+If you are running Ubuntu, or any other Debian based distro,
+make ubuntudeps
+should get you everything you need to build/run the various YogaHero
+programs
