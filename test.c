@@ -3,32 +3,17 @@
 #include <gio/gio.h>
 
 typedef enum {
-  ALIGN_ONLY,
-  ALIGN_ONLY_SCALE,
-  BASE,
   ANGLE_1,
-  FLOOR_1,
   ANGLE_10,
-  FLOOR_10,
   ANGLE_100,
-  FLOOR_100,
   ANGLE_1000,
-  FLOOR_1000,
   ANGLE_10000,
-  FLOOR_10000,
   ALL,
   ANGLE_5000,
   ANGLE_15000,
   ANGLE_20000,
   ANGLE_25000,
   ANGLE_50000,
-  FLOOR_500,
-  FLOOR_1500,
-  FLOOR_2000,
-  FLOOR_2500,
-  FLOOR_3000,
-  FLOOR_3500,
-  FLOOR_4000,
   ALL_10_15,
   ALL_10_20,
   ALL_10_25,
@@ -51,7 +36,22 @@ typedef enum {
   ALL_25_35,
   ALL_20_5,
   ALL_20_5_S,
-  ALL_10_25_S
+  ALL_10_25_S,
+  ALIGN_ONLY,
+  ALIGN_ONLY_SCALE,
+  BASE,
+  FLOOR_1,
+  FLOOR_10,
+  FLOOR_100,
+  FLOOR_1000,
+  FLOOR_10000,
+  FLOOR_500,
+  FLOOR_1500,
+  FLOOR_2000,
+  FLOOR_2500,
+  FLOOR_3000,
+  FLOOR_3500,
+  FLOOR_4000
 } TEST_TYPE;
 
 void run_match(char*, char*, TEST_TYPE);
@@ -64,6 +64,11 @@ void system(char *command) {
   printf("%s\n", command);
 }
 */
+
+void g_print(const gchar *c, ...) {
+  return;
+}
+
 int main (int argc, char **argv) {
   GString *newFn;
   GString *command;
@@ -121,16 +126,25 @@ int main (int argc, char **argv) {
     run_match(imagefn, posefn, i);
   */
 
-  // fourth round
+  /*  // fourth round
   for (i = ALL_20_5; i <= ALL_10_25_S; i++)
     run_match(imagefn, posefn, i);
+  */
+
+  // fifth round (rerun all tests involving angle)
+  for (i = 0; i <= ALL_10_25_S; i++) {
+    printf("Test %i of %i for file %s\n", i + 1, ALL_10_25_S + 1, imagefn);
+    run_match(imagefn, posefn, i);
+  }
+
 
   return 0;
 }
 
 
 void run_match(char *imagefn, char *posefn, TEST_TYPE type) {
-  gchar command[100];
+  gchar *command;
+  command = g_malloc(100*sizeof(gchar));
 
   switch (type) {
   case ALIGN_ONLY:
@@ -330,6 +344,9 @@ void run_match(char *imagefn, char *posefn, TEST_TYPE type) {
     g_print("all 10000x2500\n");
     break;
   }
+
+
+  command = g_strconcat(command, " > /dev/null", NULL);
 
   system(command);
 
