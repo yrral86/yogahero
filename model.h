@@ -1,6 +1,8 @@
 #ifndef __MODEL_H__
 #define __MODEL_H__
 
+#include <cv.h>
+
 #define MODEL_ANGLES 30
 #define MODEL_SEGMENT_LENGTHS 10
 #define MODEL_CAMERA 7
@@ -153,5 +155,8 @@ void model_start_color_from_segment(float*, model_segment);
 void model_end_color_from_segment(float*, model_segment);
 void model_start_color_from_segment(float*, model_segment);
 void model_color_from_angles(float*, model_angle*, int);
+
+// for drawing image below model
+void model_set_image(IplImage*);
 
 #endif

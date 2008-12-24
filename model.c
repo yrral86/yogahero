@@ -18,6 +18,8 @@ static float correction_angle;
 static float floor_error;
 
 
+static IplImage *image = NULL;
+
 void model_draw_from_vector() {
   float scale;
   float sideangle;
@@ -51,6 +53,10 @@ void model_draw_from_vector() {
 
   // clear buffer
   glClear(GL_COLOR_BUFFER_BIT);
+
+  if (image != NULL)
+    glDrawPixels(image->width, image->height, GL_LUMINANCE,
+		 GL_UNSIGNED_BYTE, image->imageData);
 
   glLoadIdentity();
 
@@ -778,4 +784,8 @@ void model_color_from_angles(float *color, model_angle *ang, int n) {
   color[0] = error*1.0;
   color[1] = 1.0 - color[0];
   color[2] = 0;
+}
+
+void model_set_image(IplImage *i) {
+  image = i;
 }

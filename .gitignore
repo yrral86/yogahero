@@ -2,9 +2,11 @@
 findmatch
 modelviewer
 test
+feedback
 rawdata/
 trimmeddata/
 match.png
 match.pose
 match.data
+drawn.png
 *~

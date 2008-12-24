@@ -80,6 +80,8 @@ int main (int argc, char **argv) {
 
   buffer = cvCreateImage(cvGetSize(image), 8, 3);
 
+  model_set_image(image);
+
   project_color(buffer, model_get_vector() - 1);
 
 

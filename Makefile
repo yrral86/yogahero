@@ -39,7 +39,7 @@ findmatch: $(MATCH_OBJECTS) $(OBJECTS) main.c
 	gcc -o findmatch main.c -lglut $(MATCH_OBJECTS) $(OBJECTS) $(CV_FLAGS) $(CV_LIBS) $(C_FLAGS) $(GTK_GL_FLAGS)
 
 modelviewer: $(OBJECTS) modelviewer.c
-	gcc -o modelviewer modelviewer.c -lglut $(GLADE_FLAGS) $(OBJECTS) $(C_FLAGS) $(GTK_GL_FLAGS)
+	gcc -o modelviewer modelviewer.c -lglut $(GLADE_FLAGS) $(OBJECTS) $(C_FLAGS) $(GTK_GL_FLAGS) $(CV_FLAGS)
 
 test: test.c
 	gcc -o test test.c $(TEST_FLAGS) $(C_FLAGS)
@@ -52,7 +52,7 @@ test_all: test findmatch
 	done;
 
 feedback: feedback.c
-	gcc -o feeback feedback.c $(C_FLAGS) $(OBJECTS) $(GTK_GL_FLAGS) $(CV_FLAGS) $(CV_LIBS)
+	gcc -o feedback feedback.c $(C_FLAGS) $(OBJECTS) $(GTK_GL_FLAGS) $(CV_FLAGS) $(CV_LIBS)
 
 .c.o:
 	gcc -c $< -o $@ $(CV_FLAGS) $(C_FLAGS)
