@@ -218,6 +218,7 @@ void my_gluCylinder(float radius, model_segment s) {
 
       if (pose[head_s_l] != -1) {
 	model_start_color_from_segment(color, s);
+	printf("color: %gr %gg %gb\n", color[0], color[1], color[2]);
 	glColor3fv(color);
       }
 
@@ -769,12 +770,12 @@ void model_color_from_angles(float *color, model_angle *ang, int n) {
   if (n > 0)
     error /= n;
 
-  if (error > 30)
-    error = 30;
+  if (error > 10)
+    error = 10.0;
 
-  error /= 30;
+  error /= 10.0;
 
   color[0] = error*1.0;
-  color[1] = (1.0-error)*1.0;
+  color[1] = 1.0 - color[0];
   color[2] = 0;
 }

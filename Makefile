@@ -33,7 +33,7 @@ DEPS = \
 	libgtk2.0-dev \
 	libgtkglext1-dev 
 
-all: findmatch modelviewer test
+all: findmatch modelviewer test feedback
 
 findmatch: $(MATCH_OBJECTS) $(OBJECTS) main.c
 	gcc -o findmatch main.c -lglut $(MATCH_OBJECTS) $(OBJECTS) $(CV_FLAGS) $(CV_LIBS) $(C_FLAGS) $(GTK_GL_FLAGS)
@@ -51,11 +51,14 @@ test_all: test findmatch
 		done; \
 	done;
 
+feedback: feedback.c
+	gcc -o feeback feedback.c $(C_FLAGS) $(OBJECTS) $(GTK_GL_FLAGS) $(CV_FLAGS) $(CV_LIBS)
+
 .c.o:
 	gcc -c $< -o $@ $(CV_FLAGS) $(C_FLAGS)
 
 clean:
-	rm *~ findmatch modelviewer $(MATCH_OBJECTS) $(OBJECTS) match.pose match.png match.data
+	rm *~ findmatch modelviewer test feedback $(MATCH_OBJECTS) $(OBJECTS) match.pose match.png match.data
 
 ubuntudeps:
 	sudo apt-get install $(DEPS)
