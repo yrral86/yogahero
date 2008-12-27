@@ -131,12 +131,18 @@ int main (int argc, char **argv) {
     run_match(imagefn, posefn, i);
   */
 
-  // fifth round (rerun all tests involving angle)
+  /*  // fifth round (rerun all tests involving angle)
   for (i = 0; i <= ALL_10_25_S; i++) {
     printf("Test %i of %i for file %s\n", i + 1, ALL_10_25_S + 1, imagefn);
     run_match(imagefn, posefn, i);
   }
+  */
 
+  // run non angle tests
+  for (i = ALIGN_ONLY; i <= FLOOR_4000; i++) {
+    printf("Test %i of %i for file %s\n", i + 1 - ALIGN_ONLY, FLOOR_4000 + 1 - ALIGN_ONLY, imagefn);
+    run_match(imagefn, posefn, i);
+  }
 
   return 0;
 }
