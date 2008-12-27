@@ -37,6 +37,6 @@ for i in 10 15 20 25; do
     done;
 done
 
-./gatherone.sh ALL205
-./gatherone.sh ALL205S
-./gatherone.sh ALL1025S
+./gather_one.sh ALL205
+./gather_one.sh ALL205S
+./gather_one.sh ALL1025S
